@@ -3,6 +3,7 @@ package pt.bucho.weather.services;
 import java.io.File;
 import java.io.IOException;
 
+import pt.bucho.weather.entities.WeatherForecast;
 import pt.bucho.weather.state.WeatherStateMapping;
 
 import org.jsoup.Jsoup;
@@ -19,6 +20,8 @@ public class ParsingService {
 	
 	private int minTemp, maxTemp;
 	private WeatherState weatherState;
+	
+	private WeatherForecast forecast;
 	
 	public ParsingService(String file) throws IOException{
 		this.path = file;
@@ -59,6 +62,8 @@ public class ParsingService {
 		if(theStateElement != null){
 			weatherState = WeatherStateMapping.getInstance().getState(theStateElement.attr("title"));
 		}
+		
+		forecast = new WeatherForecast(maxTemp, minTemp, weatherState);
 	}
 	
 	public int getMaxTemperature() {
@@ -71,6 +76,10 @@ public class ParsingService {
 	
 	public WeatherState getWeatherState() {
 		return weatherState;
+	}
+	
+	public WeatherForecast getForecast() {
+		return forecast;
 	}
 	
 }

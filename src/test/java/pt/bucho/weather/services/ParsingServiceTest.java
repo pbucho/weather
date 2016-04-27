@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+import pt.bucho.weather.AbstractTest;
 import pt.bucho.weather.services.ParsingService;
 import pt.bucho.weather.state.WeatherState;
 
@@ -15,7 +16,7 @@ import pt.bucho.weather.state.WeatherState;
  * @author Pedro Bucho
  *
  */
-public class ParsingServiceTest {
+public class ParsingServiceTest extends AbstractTest {
 
 	private ParsingService parsingService;
 	
@@ -45,7 +46,8 @@ public class ParsingServiceTest {
 	@Test
 	public void weatherStateTest() {
 		WeatherState actualWS = parsingService.getWeatherState();
+		log.debug("The read weather is: " + actualWS);
 		assertEquals(expectedWS, actualWS);
 	}
-
+	
 }
