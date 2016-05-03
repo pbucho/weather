@@ -12,9 +12,7 @@
 	* Maximum atmospheric temperature
 	* Weather state
 	* Precipitation probability
-	* Wind direction
-	* Sea state
-	* Water temperature
+	* Wind state
 	* Ultraviolet index
 	* Weather alerts
 This information will be saved into a POJO.

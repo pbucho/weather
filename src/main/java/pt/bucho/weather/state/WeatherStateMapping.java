@@ -3,6 +3,8 @@ package pt.bucho.weather.state;
 import java.util.HashMap;
 import java.util.Map;
 
+import pt.bucho.weather.exceptions.UnknownWeatherStateException;
+
 public class WeatherStateMapping {
 
 	private static WeatherStateMapping instance;
@@ -43,8 +45,12 @@ public class WeatherStateMapping {
 		return instance;
 	}
 	
-	public WeatherState getState(String state) {
-		return mapping.get(state);
+	public WeatherState getState(String state) throws UnknownWeatherStateException {
+		WeatherState indendedState = mapping.get(state);
+		if(indendedState == null){
+			throw new UnknownWeatherStateException("Unknown weather state: " + state);
+		}
+		return indendedState;
 	}
 	
 }
