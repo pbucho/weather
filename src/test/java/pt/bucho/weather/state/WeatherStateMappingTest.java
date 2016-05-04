@@ -23,7 +23,7 @@ public class WeatherStateMappingTest {
 	
 	@Test
 	public void ceuPoucoNublado() throws UnknownWeatherStateException{
-		assertEquals(WeatherState.CEU_POUCO_NUBLADO, mapping.getState("Céu pouco nublado"));
+		assertEquals(WeatherState.CEU_POUCO_NUBLADO, mapping.getState("CÉU POUCO NUBLADO"));
 	}
 	
 	@Test

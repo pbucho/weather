@@ -3,7 +3,7 @@ package pt.bucho.weather.state;
 public enum WeatherState {
 	
 	CEU_LIMPO ("Céu limpo"),
-	CEU_POUCO_NUBLADO ("Céu pouco nublado"),
+	CEU_POUCO_NUBLADO ("CÉU POUCO NUBLADO"),
 	PERIODOS_CEU_MT_NUBLADO ("Céu com períodos de muito nublado"),
 	AGUACEIROS_FRACOS ("Aguaceiros Fracos"),
 	AGUACEIROS ("Aguaceiros"),

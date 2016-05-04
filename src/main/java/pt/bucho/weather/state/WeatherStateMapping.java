@@ -15,7 +15,7 @@ public class WeatherStateMapping {
 		mapping = new HashMap<String, WeatherState>();
 		
 		mapping.put("Céu limpo", WeatherState.CEU_LIMPO);
-		mapping.put("Céu pouco nublado", WeatherState.CEU_POUCO_NUBLADO);
+		mapping.put("CÉU POUCO NUBLADO", WeatherState.CEU_POUCO_NUBLADO);
 		mapping.put("Períodos de Céu muito nublado", WeatherState.PERIODOS_CEU_MT_NUBLADO);
 		mapping.put("Aguaceiros Fracos", WeatherState.AGUACEIROS_FRACOS);
 		mapping.put("Aguaceiros", WeatherState.AGUACEIROS);
