@@ -1,11 +1,15 @@
 package pt.bucho.weather.entities;
 
+import org.joda.time.DateTime;
+
 import pt.bucho.weather.state.UVIndex;
 import pt.bucho.weather.state.WeatherState;
 import pt.bucho.weather.state.WeatherWarning;
 
 public class WeatherForecast {
 
+	private final DateTime forecastDate;
+	
 	private int maximumTemperature;
 	private int minumumTemperature;
 	private WeatherState weatherState;
@@ -13,6 +17,14 @@ public class WeatherForecast {
 	private WindState windState;
 	private UVIndex uvIndex;
 	private WeatherWarning weatherWarning;
+	
+	public WeatherForecast(DateTime forecastDate) {
+		this.forecastDate = forecastDate;
+	}
+	
+	public DateTime getForecastDate() {
+		return forecastDate;
+	}
 	
 	public int getMaximumTemperature() {
 		return maximumTemperature;

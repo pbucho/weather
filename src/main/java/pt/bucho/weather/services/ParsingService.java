@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import pt.bucho.weather.entities.WeatherForecast;
+import pt.bucho.weather.exceptions.UnknownWeatherStateException;
 import pt.bucho.weather.state.WeatherStateMapping;
 
 import org.jsoup.Jsoup;
@@ -60,10 +61,18 @@ public class ParsingService {
 		}
 		
 		if(theStateElement != null){
-			weatherState = WeatherStateMapping.getInstance().getState(theStateElement.attr("title"));
+			try {
+				weatherState = WeatherStateMapping.getInstance().getState(theStateElement.attr("title"));
+			} catch (UnknownWeatherStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
-		forecast = new WeatherForecast(maxTemp, minTemp, weatherState);
+		forecast = new WeatherForecast(null);
+		forecast.setMaximumTemperature(maxTemp);
+		forecast.setMinumumTemperature(minTemp);
+		forecast.setWeatherState(weatherState);
 	}
 	
 	public int getMaxTemperature() {
