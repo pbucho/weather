@@ -18,7 +18,8 @@ import pt.bucho.weather.state.WeatherState;
  */
 public class ParsingServiceTest extends AbstractTest {
 
-	private ParsingService parsingService;
+	// Consider deleting this test class
+	/*private ParsingService parsingService;
 	
 	private int expectedMax = 24;
 	private int expectedMin = 13;
@@ -48,6 +49,6 @@ public class ParsingServiceTest extends AbstractTest {
 		WeatherState actualWS = parsingService.getWeatherState();
 		log.debug("The read weather is: " + actualWS);
 		assertEquals(expectedWS, actualWS);
-	}
+	}*/
 	
 }

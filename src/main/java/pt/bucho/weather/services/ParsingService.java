@@ -2,11 +2,14 @@ package pt.bucho.weather.services;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
+import pt.bucho.utilities.geopt.District;
 import pt.bucho.weather.entities.WeatherForecast;
 import pt.bucho.weather.exceptions.UnknownWeatherStateException;
 import pt.bucho.weather.state.WeatherStateMapping;
 
+import org.joda.time.DateTime;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,9 +22,6 @@ public class ParsingService {
 	private String path;
 	private Document doc;
 	
-	private int minTemp, maxTemp;
-	private WeatherState weatherState;
-	
 	private WeatherForecast forecast;
 	
 	public ParsingService(String file) throws IOException{
@@ -32,59 +32,17 @@ public class ParsingService {
 	private void parse() throws IOException {
 		File htmlFile = new File(path);
 		doc = Jsoup.parse(htmlFile, "UTF-8", "");
+		forecast = new WeatherForecast(DateTime.now());
 		
-		String maxTempStr = doc.getElementsByClass("temp_max").first().html().substring(0, 2);
-		String minTempStr = doc.getElementsByClass("temp_min").first().html().substring(0, 2);
+		Element tabMeteo = doc.getElementById("tab_meteo");
 		
-		try {
-			maxTemp = Integer.parseInt(maxTempStr);
-		}catch(NumberFormatException e){
-			maxTempStr = maxTempStr.substring(0, 1);
-			maxTemp = Integer.parseInt(maxTempStr);
-		}
+		Element tableLocation = tabMeteo.getElementById("tit_cidade");
+		forecast.setForecastDistrict(District.valueOf(tableLocation.getElementsByClass("tit_cidade").get(0).html().trim().toUpperCase()));
 		
-		try {
-			minTemp = Integer.parseInt(minTempStr);
-		}catch(NumberFormatException e){
-			minTempStr = minTempStr.substring(0, 1);
-			minTemp = Integer.parseInt(minTempStr);
-		}
+		Element tableImage = tabMeteo.getElementsByTag("tr").get(3).getElementsByTag("td").get(1).getElementsByTag("img").get(0);
+		forecast.setWeatherState(WeatherState.valueOf(tableImage.attr("title").toUpperCase(Locale.ENGLISH)));
 		
-		Elements imgElements = doc.getElementsByTag("img");
-		Element theStateElement = null;
 		
-		for(Element img : imgElements){
-			if(img.attr("src").startsWith("/opencms/bin/images.site/otempo")){
-				theStateElement = img;
-				break;
-			}
-		}
-		
-		if(theStateElement != null){
-			try {
-				weatherState = WeatherStateMapping.getInstance().getState(theStateElement.attr("title"));
-			} catch (UnknownWeatherStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		forecast = new WeatherForecast(null);
-		forecast.setMaximumTemperature(maxTemp);
-		forecast.setMinumumTemperature(minTemp);
-		forecast.setWeatherState(weatherState);
-	}
-	
-	public int getMaxTemperature() {
-		return maxTemp;
-	}
-	
-	public int getMinTemperature() {
-		return minTemp;
-	}
-	
-	public WeatherState getWeatherState() {
-		return weatherState;
 	}
 	
 	public WeatherForecast getForecast() {

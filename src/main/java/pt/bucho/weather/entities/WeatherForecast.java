@@ -2,6 +2,7 @@ package pt.bucho.weather.entities;
 
 import org.joda.time.DateTime;
 
+import pt.bucho.utilities.geopt.District;
 import pt.bucho.weather.state.UVIndex;
 import pt.bucho.weather.state.WeatherState;
 import pt.bucho.weather.state.WeatherWarning;
@@ -10,6 +11,7 @@ public class WeatherForecast {
 
 	private final DateTime forecastDate;
 	
+	private District forecastDistrict;
 	private int maximumTemperature;
 	private int minumumTemperature;
 	private WeatherState weatherState;
@@ -26,6 +28,14 @@ public class WeatherForecast {
 		return forecastDate;
 	}
 	
+	public District getForecastDistrict() {
+		return forecastDistrict;
+	}
+
+	public void setForecastDistrict(District forecastDistrict) {
+		this.forecastDistrict = forecastDistrict;
+	}
+
 	public int getMaximumTemperature() {
 		return maximumTemperature;
 	}

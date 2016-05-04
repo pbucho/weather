@@ -4,7 +4,7 @@ public enum WeatherState {
 	
 	CEU_LIMPO ("Céu limpo"),
 	CEU_POUCO_NUBLADO ("Céu pouco nublado"),
-	PERIODOS_CEU_MT_NUBLADO ("Períodos de Céu muito nublado"),
+	PERIODOS_CEU_MT_NUBLADO ("Céu com períodos de muito nublado"),
 	AGUACEIROS_FRACOS ("Aguaceiros Fracos"),
 	AGUACEIROS ("Aguaceiros"),
 	AGUACEIROS_FORTES ("Aguaceiros Fortes"),
