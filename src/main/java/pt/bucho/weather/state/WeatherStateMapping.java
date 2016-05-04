@@ -14,28 +14,28 @@ public class WeatherStateMapping {
 	private WeatherStateMapping() {
 		mapping = new HashMap<String, WeatherState>();
 		
-		mapping.put("Céu limpo", WeatherState.CEU_LIMPO);
+		mapping.put("CÉU LIMPO", WeatherState.CEU_LIMPO);
 		mapping.put("CÉU POUCO NUBLADO", WeatherState.CEU_POUCO_NUBLADO);
-		mapping.put("Períodos de Céu muito nublado", WeatherState.PERIODOS_CEU_MT_NUBLADO);
-		mapping.put("Aguaceiros Fracos", WeatherState.AGUACEIROS_FRACOS);
-		mapping.put("Aguaceiros", WeatherState.AGUACEIROS);
-		mapping.put("Aguaceiros Fortes", WeatherState.AGUACEIROS_FORTES);
-		mapping.put("Muito nublado", WeatherState.MUITO_NUBLADO);
-		mapping.put("Nevoeiro", WeatherState.NEVOEIRO);
-		mapping.put("Céu nublado por nuvens altas", WeatherState.CEU_NUBLADO_NUVENS_ALTAS);
-		mapping.put("Neblina", WeatherState.NEBLINA);
-		mapping.put("Períodos de chuva", WeatherState.PERIODOS_CHUVA);
-		mapping.put("Chuva", WeatherState.CHUVA);
-		mapping.put("Períodos de chuva fraca", WeatherState.PERIODOS_CHUVA_FRACA);
-		mapping.put("Chuva forte", WeatherState.CHUVA_FORTE);
-		mapping.put("Períodos de chuva forte", WeatherState.PERIODOS_CHUVA_FORTE);
-		mapping.put("Chuvisco", WeatherState.CHUVISCO);
-		mapping.put("Chuva fraca", WeatherState.CHUVA_FRACA);
-		mapping.put("Neve", WeatherState.NEVE);
-		mapping.put("Trovoada", WeatherState.TROVOADA);
-		mapping.put("Granizo", WeatherState.GRANIZO);
-		mapping.put("Aguaceiros e trovoada", WeatherState.AGUACEIROS_E_TROVOADA);
-		mapping.put("Geada", WeatherState.GEADA);
+		mapping.put("PERÍODOS DE CÉU MUITO NUBLADO", WeatherState.PERIODOS_CEU_MT_NUBLADO);
+		mapping.put("AGUACEIROS FRACOS", WeatherState.AGUACEIROS_FRACOS);
+		mapping.put("AGUACEIROS", WeatherState.AGUACEIROS);
+		mapping.put("AGUACEIROS FORTES", WeatherState.AGUACEIROS_FORTES);
+		mapping.put("MUITO NUBLADO", WeatherState.MUITO_NUBLADO);
+		mapping.put("NEVOEIRO", WeatherState.NEVOEIRO);
+		mapping.put("CÉU NUBLADO POR NUVENS ALTAS", WeatherState.CEU_NUBLADO_NUVENS_ALTAS);
+		mapping.put("NEBLINA", WeatherState.NEBLINA);
+		mapping.put("PERÍODOS DE CHUVA", WeatherState.PERIODOS_CHUVA);
+		mapping.put("CHUVA", WeatherState.CHUVA);
+		mapping.put("PERÍODOS DE CHUVA FRACA", WeatherState.PERIODOS_CHUVA_FRACA);
+		mapping.put("CHUVA FORTE", WeatherState.CHUVA_FORTE);
+		mapping.put("PERÍODOS DE CHUVA FORTE", WeatherState.PERIODOS_CHUVA_FORTE);
+		mapping.put("CHUVISCO", WeatherState.CHUVISCO);
+		mapping.put("CHUVA FRACA", WeatherState.CHUVA_FRACA);
+		mapping.put("NEVE", WeatherState.NEVE);
+		mapping.put("TROVOADA", WeatherState.TROVOADA);
+		mapping.put("GRANIZO", WeatherState.GRANIZO);
+		mapping.put("AGUACEIROS E TROVOADA", WeatherState.AGUACEIROS_E_TROVOADA);
+		mapping.put("GEADA", WeatherState.GEADA);
 	}
 	
 	public static WeatherStateMapping getInstance() {
