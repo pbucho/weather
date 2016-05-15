@@ -1,5 +1,8 @@
 package pt.bucho.weather.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import org.joda.time.DateTime;
 
 import pt.bucho.utilities.geopt.District;
@@ -7,10 +10,12 @@ import pt.bucho.weather.state.UVIndex;
 import pt.bucho.weather.state.WeatherState;
 import pt.bucho.weather.state.WeatherWarning;
 
+@Entity
 public class WeatherForecast {
 
+	@Id
 	private final DateTime forecastDate;
-	
+	@Id
 	private District forecastDistrict;
 	private int maximumTemperature;
 	private int minumumTemperature;
