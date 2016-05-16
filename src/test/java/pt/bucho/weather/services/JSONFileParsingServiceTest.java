@@ -145,7 +145,7 @@ public class JSONFileParsingServiceTest {
 	
 	@Test
 	public void happyPath() {
-		parsingService = new JSONFileParsingService("example1.json");
+		parsingService = new JSONFileParsingService("src/test/resources/example1.json");
 		parsingService.parse();
 		
 		assertEquals(expectedRequest, actualRequest);

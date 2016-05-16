@@ -4,27 +4,27 @@ import org.joda.time.DateTimeZone;
 
 public class Request {
 
-	private float latitude;
-	private float longitude;
+	private double latitude;
+	private double longitude;
 	private DateTimeZone timezone;
-	private int offset;
+	private long offset;
 	private WeatherData currently;
 	private HourlyWeatherData hourly;
 	private DailyWeatherData daily;
 
-	public float getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(float latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
-	public float getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(float longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -36,11 +36,11 @@ public class Request {
 		this.timezone = timezone;
 	}
 
-	public int getOffset() {
+	public long getOffset() {
 		return offset;
 	}
 
-	public void setOffset(int offset) {
+	public void setOffset(long offset) {
 		this.offset = offset;
 	}
 

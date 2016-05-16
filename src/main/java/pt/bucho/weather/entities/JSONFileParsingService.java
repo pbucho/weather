@@ -26,13 +26,13 @@ public class JSONFileParsingService implements JSONParsingService {
 		JSONParser parser = new JSONParser();
 		try {
 			JSONObject json = (JSONObject) parser.parse(new FileReader(path));
-			request.setLatitude((Float) json.get("latitude"));
-			request.setLongitude((Float) json.get("longitude"));
+			request.setLatitude((Double) json.get("latitude"));
+			request.setLongitude((Double) json.get("longitude"));
 			request.setTimezone(DateTimeZone.forID((String) json.get("timezone")));
-			request.setOffset((Integer) json.get("offset"));
-			JSONObject currently = (JSONObject) ((JSONArray) json.get("currently")).get(0);
-			JSONArray hourly = (JSONArray) json.get("hourly");
-			JSONArray daily = (JSONArray) json.get("daily");
+			request.setOffset((Long) json.get("offset"));
+			JSONObject currently = (JSONObject) json.get("currently");
+			JSONObject hourly = (JSONObject) json.get("hourly");
+			JSONObject daily = (JSONObject) json.get("daily");
 
 			WeatherData currentlyData = new WeatherData();
 			currentlyData.setTime(new DateTime(Long.parseLong(((String) currently.get("time")) + "000")));
