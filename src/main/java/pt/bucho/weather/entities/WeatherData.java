@@ -8,17 +8,17 @@ public class WeatherData {
 	protected String summary;
 	protected String icon;
 	protected String precipType;
-	protected float precipIntensity;
-	protected float precipProbability;
-	protected float temperature;
-	protected float apparentTemperature;
-	protected float dewPoint;
-	protected float humidity;
-	protected float windSpeed;
-	protected float windBearing;
-	protected float cloudCover;
-	protected float pressure;
-	protected float ozone;
+	protected double precipIntensity;
+	protected double precipProbability;
+	protected double temperature;
+	protected double apparentTemperature;
+	protected double dewPoint;
+	protected double humidity;
+	protected double windSpeed;
+	protected double windBearing;
+	protected double cloudCover;
+	protected double pressure;
+	protected double ozone;
 
 	public DateTime getTime() {
 		return time;
@@ -52,91 +52,91 @@ public class WeatherData {
 		this.precipType = precipType;
 	}
 
-	public float getPrecipIntensity() {
+	public double getPrecipIntensity() {
 		return precipIntensity;
 	}
 
-	public void setPrecipIntensity(float precipIntensity) {
+	public void setPrecipIntensity(double precipIntensity) {
 		this.precipIntensity = precipIntensity;
 	}
 
-	public float getPrecipProbability() {
+	public double getPrecipProbability() {
 		return precipProbability;
 	}
 
-	public void setPrecipProbability(float precipProbability) {
+	public void setPrecipProbability(double precipProbability) {
 		this.precipProbability = precipProbability;
 	}
 
-	public float getTemperature() {
+	public double getTemperature() {
 		return temperature;
 	}
 
-	public void setTemperature(float temperature) {
+	public void setTemperature(double temperature) {
 		this.temperature = temperature;
 	}
 
-	public float getApparentTemperature() {
+	public double getApparentTemperature() {
 		return apparentTemperature;
 	}
 
-	public void setApparentTemperature(float apparentTemperature) {
+	public void setApparentTemperature(double apparentTemperature) {
 		this.apparentTemperature = apparentTemperature;
 	}
 
-	public float getDewPoint() {
+	public double getDewPoint() {
 		return dewPoint;
 	}
 
-	public void setDewPoint(float dewPoint) {
+	public void setDewPoint(double dewPoint) {
 		this.dewPoint = dewPoint;
 	}
 
-	public float getHumidity() {
+	public double getHumidity() {
 		return humidity;
 	}
 
-	public void setHumidity(float humidity) {
+	public void setHumidity(double humidity) {
 		this.humidity = humidity;
 	}
 
-	public float getWindSpeed() {
+	public double getWindSpeed() {
 		return windSpeed;
 	}
 
-	public void setWindSpeed(float windSpeed) {
+	public void setWindSpeed(double windSpeed) {
 		this.windSpeed = windSpeed;
 	}
 
-	public float getWindBearing() {
+	public double getWindBearing() {
 		return windBearing;
 	}
 
-	public void setWindBearing(float windBearing) {
+	public void setWindBearing(double windBearing) {
 		this.windBearing = windBearing;
 	}
 
-	public float getCloudCover() {
+	public double getCloudCover() {
 		return cloudCover;
 	}
 
-	public void setCloudCover(float cloudCover) {
+	public void setCloudCover(double cloudCover) {
 		this.cloudCover = cloudCover;
 	}
 
-	public float getPressure() {
+	public double getPressure() {
 		return pressure;
 	}
 
-	public void setPressure(float pressure) {
+	public void setPressure(double pressure) {
 		this.pressure = pressure;
 	}
 
-	public float getOzone() {
+	public double getOzone() {
 		return ozone;
 	}
 
-	public void setOzone(float ozone) {
+	public void setOzone(double ozone) {
 		this.ozone = ozone;
 	}
 

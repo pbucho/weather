@@ -35,20 +35,20 @@ public class JSONFileParsingService implements JSONParsingService {
 			JSONObject daily = (JSONObject) json.get("daily");
 
 			WeatherData currentlyData = new WeatherData();
-			currentlyData.setTime(new DateTime(Long.parseLong(((String) currently.get("time")) + "000")));
-			currentlyData.setSummary((String) currently.get("summary"));
-			currentlyData.setIcon((String) currently.get("icon"));
-			currentlyData.setPrecipIntensity((Float) currently.get("precipIntensity"));
-			currentlyData.setPrecipProbability((Float) currently.get("precipProbability"));
-			currentlyData.setTemperature((Float) currently.get("temperature"));
-			currentlyData.setApparentTemperature((Float) currently.get("apparentTemperature"));
-			currentlyData.setDewPoint((Float) currently.get("dewPoint"));
-			currentlyData.setHumidity((Float) currently.get("humidity"));
-			currentlyData.setWindSpeed((Float) currently.get("windSpeed"));
-			currentlyData.setWindBearing((Float) currently.get("windBearing"));
-			currentlyData.setCloudCover((Float) currently.get("cloudCover"));
-			currentlyData.setPressure((Float) currently.get("pressure"));
-			currentlyData.setOzone((Float) currently.get("ozone"));
+			currentlyData.setTime(new DateTime((Long) currently.get("time") * 1000));
+			currentlyData.setSummary(String.valueOf(currently.get("summary")));
+			currentlyData.setIcon(String.valueOf(currently.get("icon")));
+			currentlyData.setPrecipIntensity(parseDouble(currently.get("precipIntensity")));
+			currentlyData.setPrecipProbability(parseDouble(currently.get("precipProbability")));
+			currentlyData.setTemperature(parseDouble(currently.get("temperature")));
+			currentlyData.setApparentTemperature(parseDouble(currently.get("apparentTemperature")));
+			currentlyData.setDewPoint(parseDouble(currently.get("dewPoint")));
+			currentlyData.setHumidity(parseDouble(currently.get("humidity")));
+			currentlyData.setWindSpeed(parseDouble(currently.get("windSpeed")));
+			currentlyData.setWindBearing(parseDouble(currently.get("windBearing")));
+			currentlyData.setCloudCover(parseDouble(currently.get("cloudCover")));
+			currentlyData.setPressure(parseDouble(currently.get("pressure")));
+			currentlyData.setOzone(parseDouble(currently.get("ozone")));
 			request.setCurrently(currentlyData);
 
 			HourlyWeatherData hourlyData = new HourlyWeatherData();
@@ -77,6 +77,15 @@ public class JSONFileParsingService implements JSONParsingService {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private static double parseDouble(Object element) {
+		if(element instanceof Double){
+			return (Double) element;
+		}else{
+			String elem = String.valueOf(element);
+			return Double.parseDouble(elem);
 		}
 	}
 
