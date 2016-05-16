@@ -8,17 +8,17 @@ public class WeatherData {
 	protected String summary;
 	protected String icon;
 	protected String precipType;
-	protected double precipIntensity;
-	protected double precipProbability;
-	protected double temperature;
-	protected double apparentTemperature;
-	protected double dewPoint;
-	protected double humidity;
-	protected double windSpeed;
-	protected double windBearing;
-	protected double cloudCover;
-	protected double pressure;
-	protected double ozone;
+	protected Double precipIntensity;
+	protected Double precipProbability;
+	protected Double temperature;
+	protected Double apparentTemperature;
+	protected Double dewPoint;
+	protected Double humidity;
+	protected Double windSpeed;
+	protected Double windBearing;
+	protected Double cloudCover;
+	protected Double pressure;
+	protected Double ozone;
 
 	public DateTime getTime() {
 		return time;
@@ -52,91 +52,91 @@ public class WeatherData {
 		this.precipType = precipType;
 	}
 
-	public double getPrecipIntensity() {
+	public Double getPrecipIntensity() {
 		return precipIntensity;
 	}
 
-	public void setPrecipIntensity(double precipIntensity) {
+	public void setPrecipIntensity(Double precipIntensity) {
 		this.precipIntensity = precipIntensity;
 	}
 
-	public double getPrecipProbability() {
+	public Double getPrecipProbability() {
 		return precipProbability;
 	}
 
-	public void setPrecipProbability(double precipProbability) {
+	public void setPrecipProbability(Double precipProbability) {
 		this.precipProbability = precipProbability;
 	}
 
-	public double getTemperature() {
+	public Double getTemperature() {
 		return temperature;
 	}
 
-	public void setTemperature(double temperature) {
+	public void setTemperature(Double temperature) {
 		this.temperature = temperature;
 	}
 
-	public double getApparentTemperature() {
+	public Double getApparentTemperature() {
 		return apparentTemperature;
 	}
 
-	public void setApparentTemperature(double apparentTemperature) {
+	public void setApparentTemperature(Double apparentTemperature) {
 		this.apparentTemperature = apparentTemperature;
 	}
 
-	public double getDewPoint() {
+	public Double getDewPoint() {
 		return dewPoint;
 	}
 
-	public void setDewPoint(double dewPoint) {
+	public void setDewPoint(Double dewPoint) {
 		this.dewPoint = dewPoint;
 	}
 
-	public double getHumidity() {
+	public Double getHumidity() {
 		return humidity;
 	}
 
-	public void setHumidity(double humidity) {
+	public void setHumidity(Double humidity) {
 		this.humidity = humidity;
 	}
 
-	public double getWindSpeed() {
+	public Double getWindSpeed() {
 		return windSpeed;
 	}
 
-	public void setWindSpeed(double windSpeed) {
+	public void setWindSpeed(Double windSpeed) {
 		this.windSpeed = windSpeed;
 	}
 
-	public double getWindBearing() {
+	public Double getWindBearing() {
 		return windBearing;
 	}
 
-	public void setWindBearing(double windBearing) {
+	public void setWindBearing(Double windBearing) {
 		this.windBearing = windBearing;
 	}
 
-	public double getCloudCover() {
+	public Double getCloudCover() {
 		return cloudCover;
 	}
 
-	public void setCloudCover(double cloudCover) {
+	public void setCloudCover(Double cloudCover) {
 		this.cloudCover = cloudCover;
 	}
 
-	public double getPressure() {
+	public Double getPressure() {
 		return pressure;
 	}
 
-	public void setPressure(double pressure) {
+	public void setPressure(Double pressure) {
 		this.pressure = pressure;
 	}
 
-	public double getOzone() {
+	public Double getOzone() {
 		return ozone;
 	}
 
-	public void setOzone(double ozone) {
+	public void setOzone(Double ozone) {
 		this.ozone = ozone;
 	}
 
@@ -161,34 +161,37 @@ public class WeatherData {
 		if (!precipType.equals(oth.precipType)) {
 			return false;
 		}
-		if (precipIntensity != oth.precipIntensity) {
+		if (!precipIntensity.equals(oth.precipIntensity)) {
 			return false;
 		}
-		if (precipProbability != oth.precipProbability) {
+		if (!precipProbability.equals(oth.precipProbability)) {
 			return false;
 		}
-		if (temperature != oth.temperature) {
+		if (!temperature.equals(oth.temperature)) {
 			return false;
 		}
-		if (apparentTemperature != oth.apparentTemperature) {
+		if (!apparentTemperature.equals(oth.apparentTemperature)) {
 			return false;
 		}
-		if (dewPoint != oth.dewPoint) {
+		if (!dewPoint.equals(oth.dewPoint)) {
 			return false;
 		}
-		if (humidity != oth.humidity) {
+		if (!humidity.equals(oth.humidity)) {
 			return false;
 		}
-		if (windSpeed != oth.windSpeed) {
+		if (!windSpeed.equals(oth.windSpeed)) {
 			return false;
 		}
-		if (windBearing != oth.windBearing) {
+		if (!windBearing.equals(oth.windBearing)) {
 			return false;
 		}
-		if (cloudCover != oth.cloudCover) {
+		if (!cloudCover.equals(oth.cloudCover)) {
 			return false;
 		}
-		return ozone == oth.ozone;
+		if (!pressure.equals(oth.pressure)) {
+			return false;
+		}
+		return ozone.equals(oth.ozone);
 	}
 
 }

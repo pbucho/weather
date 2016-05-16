@@ -16,13 +16,14 @@ import pt.bucho.weather.services.JSONParsingService;
 public class JSONFileParsingService implements JSONParsingService {
 
 	private String path;
+	private Request request;
 
 	public JSONFileParsingService(String filePath) {
 		this.path = filePath;
 	}
 
 	public void parse() {
-		Request request = new Request();
+		request = new Request();
 		JSONParser parser = new JSONParser();
 		try {
 			JSONObject json = (JSONObject) parser.parse(new FileReader(path));
@@ -52,13 +53,17 @@ public class JSONFileParsingService implements JSONParsingService {
 			request.setCurrently(currentlyData);
 
 			HourlyWeatherData hourlyData = new HourlyWeatherData();
-			for (int i = 0; i < hourly.size(); i++) {
-				JSONObject obj = (JSONObject) hourly.get(i);
+			hourlyData.setSummary(String.valueOf(hourly.get("summary")));
+			hourlyData.setIcon(String.valueOf(hourly.get("icon")));
+			JSONArray hourlyArray = (JSONArray) hourly.get("data");
+			for (int i = 0; i < hourlyArray.size(); i++) {
+				JSONObject obj = (JSONObject) hourlyArray.get(i);
 				WeatherData thisHour = new WeatherData();
-				thisHour.setTime(new DateTime(Long.parseLong(((String) obj.get("time")) + "000")));
+				thisHour.setTime(new DateTime((Long) obj.get("time") * 1000));
 				thisHour.setSummary(String.valueOf(obj.get("summary")));
 				thisHour.setIcon(String.valueOf(obj.get("icon")));
 				thisHour.setPrecipIntensity(parseDouble(obj.get("precipIntensity")));
+				thisHour.setPrecipType(String.valueOf(obj.get("precipType")));
 				thisHour.setPrecipProbability(parseDouble(obj.get("precipProbability")));
 				thisHour.setTemperature(parseDouble(obj.get("temperature")));
 				thisHour.setApparentTemperature(parseDouble(obj.get("apparentTemperature")));
@@ -71,6 +76,7 @@ public class JSONFileParsingService implements JSONParsingService {
 				thisHour.setOzone(parseDouble(obj.get("ozone")));
 				hourlyData.setData(i, thisHour);
 			}
+			request.setHourly(hourlyData);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -80,12 +86,20 @@ public class JSONFileParsingService implements JSONParsingService {
 		}
 	}
 	
-	private static double parseDouble(Object element) {
+	public Request getResult() {
+		return request;
+	}
+	
+	private static Double parseDouble(Object element) {
 		if(element instanceof Double){
 			return (Double) element;
 		}else{
 			String elem = String.valueOf(element);
-			return Double.parseDouble(elem);
+			if(elem.equals("null")){
+				return null;
+			}else{
+				return Double.parseDouble(elem);
+			}
 		}
 	}
 
