@@ -56,19 +56,19 @@ public class JSONFileParsingService implements JSONParsingService {
 				JSONObject obj = (JSONObject) hourly.get(i);
 				WeatherData thisHour = new WeatherData();
 				thisHour.setTime(new DateTime(Long.parseLong(((String) obj.get("time")) + "000")));
-				thisHour.setSummary((String) obj.get("summary"));
-				thisHour.setIcon((String) obj.get("icon"));
-				thisHour.setPrecipIntensity((Float) obj.get("precipIntensity"));
-				thisHour.setPrecipProbability((Float) obj.get("precipProbability"));
-				thisHour.setTemperature((Float) obj.get("temperature"));
-				thisHour.setApparentTemperature((Float) obj.get("apparentTemperature"));
-				thisHour.setDewPoint((Float) obj.get("dewPoint"));
-				thisHour.setHumidity((Float) obj.get("humidity"));
-				thisHour.setWindSpeed((Float) obj.get("windSpeed"));
-				thisHour.setWindBearing((Float) obj.get("windBearing"));
-				thisHour.setCloudCover((Float) obj.get("cloudCover"));
-				thisHour.setPressure((Float) obj.get("pressure"));
-				thisHour.setOzone((Float) obj.get("ozone"));
+				thisHour.setSummary(String.valueOf(obj.get("summary")));
+				thisHour.setIcon(String.valueOf(obj.get("icon")));
+				thisHour.setPrecipIntensity(parseDouble(obj.get("precipIntensity")));
+				thisHour.setPrecipProbability(parseDouble(obj.get("precipProbability")));
+				thisHour.setTemperature(parseDouble(obj.get("temperature")));
+				thisHour.setApparentTemperature(parseDouble(obj.get("apparentTemperature")));
+				thisHour.setDewPoint(parseDouble(obj.get("dewPoint")));
+				thisHour.setHumidity(parseDouble(obj.get("humidity")));
+				thisHour.setWindSpeed(parseDouble(obj.get("windSpeed")));
+				thisHour.setWindBearing(parseDouble(obj.get("windBearing")));
+				thisHour.setCloudCover(parseDouble(obj.get("cloudCover")));
+				thisHour.setPressure(parseDouble(obj.get("pressure")));
+				thisHour.setOzone(parseDouble(obj.get("ozone")));
 				hourlyData.setData(i, thisHour);
 			}
 		} catch (FileNotFoundException e) {
