@@ -68,34 +68,4 @@ public class Request {
 		this.daily = daily;
 	}
 
-	@Override
-	public boolean equals(Object other) {
-		if (this == other) {
-			return true;
-		}
-		if (!(other instanceof Request)) {
-			return false;
-		}
-		Request oth = (Request) other;
-		if (latitude != oth.latitude) {
-			return false;
-		}
-		if (longitude != oth.longitude) {
-			return false;
-		}
-		if (!timezone.equals(oth.timezone)) {
-			return false;
-		}
-		if (offset != oth.offset) {
-			return false;
-		}
-		if (!currently.equals(oth.currently)) {
-			return false;
-		}
-		if (!hourly.equals(oth.hourly)) {
-			return false;
-		}
-		return daily.equals(oth.daily);
-	}
-
 }

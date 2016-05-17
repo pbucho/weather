@@ -53,30 +53,4 @@ public class HourlyWeatherData {
 		this.icon = icon;
 	}
 	
-	@Override
-	public boolean equals(Object other) {
-		if(this == other){
-			return true;
-		}
-		if(!(other instanceof HourlyWeatherData)){
-			return false;
-		}
-		HourlyWeatherData oth = (HourlyWeatherData) other;
-		if(!summary.equals(oth.summary)){
-			return false;
-		}
-		if(!icon.equals(oth.icon)){
-			return false;
-		}
-		if(hourly.length != oth.hourly.length){
-			return false;
-		}
-		for(int i = 0; i < hourly.length; i++){
-			if(!hourly[i].equals(oth.hourly[i])){
-				return false;
-			}
-		}
-		return true;
-	}
-
 }
