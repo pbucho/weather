@@ -6,15 +6,15 @@ public class DailyWeatherData extends WeatherData {
 
 	private DateTime sunriseTime;
 	private DateTime sunsetTime;
-	private float moonPhase;
-	private float precipIntensityMax;
-	private float temperatureMin;
+	private Double moonPhase;
+	private Double precipIntensityMax;
+	private Double temperatureMin;
 	private DateTime temperatureMinTime;
-	private float temperatureMax;
+	private Double temperatureMax;
 	private DateTime temperatureMaxTime;
-	private float apparentTemperatureMin;
+	private Double apparentTemperatureMin;
 	private DateTime apparentTemperatureMinTime;
-	private float apparentTemperatureMax;
+	private Double apparentTemperatureMax;
 	private DateTime apparentTemperatureMaxTime;
 
 	public DateTime getSunriseTime() {
@@ -33,27 +33,27 @@ public class DailyWeatherData extends WeatherData {
 		this.sunsetTime = sunsetTime;
 	}
 
-	public float getMoonPhase() {
+	public Double getMoonPhase() {
 		return moonPhase;
 	}
 
-	public void setMoonPhase(float moonPhase) {
+	public void setMoonPhase(Double moonPhase) {
 		this.moonPhase = moonPhase;
 	}
 
-	public float getPrecipIntensityMax() {
+	public Double getPrecipIntensityMax() {
 		return precipIntensityMax;
 	}
 
-	public void setPrecipIntensityMax(float precipIntensityMax) {
+	public void setPrecipIntensityMax(Double precipIntensityMax) {
 		this.precipIntensityMax = precipIntensityMax;
 	}
 
-	public float getTemperatureMin() {
+	public Double getTemperatureMin() {
 		return temperatureMin;
 	}
 
-	public void setTemperatureMin(float temperatureMin) {
+	public void setTemperatureMin(Double temperatureMin) {
 		this.temperatureMin = temperatureMin;
 	}
 
@@ -65,11 +65,11 @@ public class DailyWeatherData extends WeatherData {
 		this.temperatureMinTime = temperatureMinTime;
 	}
 
-	public float getTemperatureMax() {
+	public Double getTemperatureMax() {
 		return temperatureMax;
 	}
 
-	public void setTemperatureMax(float temperatureMax) {
+	public void setTemperatureMax(Double temperatureMax) {
 		this.temperatureMax = temperatureMax;
 	}
 
@@ -81,11 +81,11 @@ public class DailyWeatherData extends WeatherData {
 		this.temperatureMaxTime = temperatureMaxTime;
 	}
 
-	public float getApparentTemperatureMin() {
+	public Double getApparentTemperatureMin() {
 		return apparentTemperatureMin;
 	}
 
-	public void setApparentTemperatureMin(float apparentTemperatureMin) {
+	public void setApparentTemperatureMin(Double apparentTemperatureMin) {
 		this.apparentTemperatureMin = apparentTemperatureMin;
 	}
 
@@ -97,11 +97,11 @@ public class DailyWeatherData extends WeatherData {
 		this.apparentTemperatureMinTime = apparentTemperatureMinTime;
 	}
 
-	public float getApparentTemperatureMax() {
+	public Double getApparentTemperatureMax() {
 		return apparentTemperatureMax;
 	}
 
-	public void setApparentTemperatureMax(float apparentTemperatureMax) {
+	public void setApparentTemperatureMax(Double apparentTemperatureMax) {
 		this.apparentTemperatureMax = apparentTemperatureMax;
 	}
 

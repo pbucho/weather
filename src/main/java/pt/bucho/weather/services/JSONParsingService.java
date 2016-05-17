@@ -1,10 +1,10 @@
 package pt.bucho.weather.services;
 
-import pt.bucho.weather.entities.Request;
+import pt.bucho.weather.entities.Report;
 
 public interface JSONParsingService {
 
 	public void parse();
-	public Request getResult();
+	public Report getResult();
 	
 }

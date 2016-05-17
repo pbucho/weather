@@ -2,7 +2,7 @@ package pt.bucho.weather.entities;
 
 import org.joda.time.DateTimeZone;
 
-public class Request {
+public class Report {
 
 	private double latitude;
 	private double longitude;

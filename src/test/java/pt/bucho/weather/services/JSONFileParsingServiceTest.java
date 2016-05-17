@@ -11,18 +11,18 @@ import org.junit.Test;
 import pt.bucho.weather.entities.DailyWeatherData;
 import pt.bucho.weather.entities.HourlyWeatherData;
 import pt.bucho.weather.entities.JSONFileParsingService;
-import pt.bucho.weather.entities.Request;
+import pt.bucho.weather.entities.Report;
 import pt.bucho.weather.entities.WeatherData;
 
 public class JSONFileParsingServiceTest {
 
 	private JSONParsingService parsingService;
-	private Request expectedRequest;
-	private Request actualRequest;
+	private Report expectedRequest;
+	private Report actualRequest;
 	
 	@Before
 	public void setUp() {
-		expectedRequest = new Request();
+		expectedRequest = new Report();
 		expectedRequest.setLatitude(38.425f);
 		expectedRequest.setLongitude(-9.822f);
 		expectedRequest.setTimezone(DateTimeZone.forID("Europe/Lisbon"));
@@ -459,21 +459,21 @@ public class JSONFileParsingServiceTest {
 		
 		DailyWeatherData dailyData = new DailyWeatherData();
 		dailyData.setTime(new DateTime(1463266800000L));
-		dailyData.setSummary("Ligeiramente nublado até tarde e vento fraco começa durante a noite");
+		dailyData.setSummary("Ligeiramente nublado até tarde e vento fraco começa durante a noite.");
 		dailyData.setIcon("wind");
 		dailyData.setSunriseTime(new DateTime(1463290141000L));
 		dailyData.setSunsetTime(new DateTime(1463341502000L));
-		dailyData.setMoonPhase(0.3f);
+		dailyData.setMoonPhase(0.3d);
 		dailyData.setPrecipIntensity(0d);
-		dailyData.setPrecipIntensityMax(0);
+		dailyData.setPrecipIntensityMax(0d);
 		dailyData.setPrecipProbability(0d);
-		dailyData.setTemperatureMin(14.69f);
+		dailyData.setTemperatureMin(14.69d);
 		dailyData.setTemperatureMinTime(new DateTime(1463288400000L));
-		dailyData.setTemperatureMax(15.81f);
+		dailyData.setTemperatureMax(15.81d);
 		dailyData.setTemperatureMaxTime(new DateTime(1463335200000L));
-		dailyData.setApparentTemperatureMin(14.69f);
+		dailyData.setApparentTemperatureMin(14.69d);
 		dailyData.setApparentTemperatureMinTime(new DateTime(1463288400000L));
-		dailyData.setApparentTemperatureMax(15.81f);
+		dailyData.setApparentTemperatureMax(15.81d);
 		dailyData.setApparentTemperatureMaxTime(new DateTime(1463335200000L));
 		dailyData.setDewPoint(12.28d);
 		dailyData.setHumidity(0.82d);
@@ -514,23 +514,23 @@ public class JSONFileParsingServiceTest {
 		assertEquals(expectedDailyData.getIcon(), actualDailyData.getIcon());
 		assertEquals(expectedDailyData.getSunriseTime(), actualDailyData.getSunriseTime());
 		assertEquals(expectedDailyData.getSunsetTime(), actualDailyData.getSunsetTime());
-		assertEquals(expectedDailyData.getMoonPhase(), actualDailyData.getMoonPhase(), 0.001d);
-		assertEquals(expectedDailyData.getPrecipIntensity(), actualDailyData.getPrecipIntensity());
-		assertEquals(expectedDailyData.getPrecipIntensityMax(), actualDailyData.getPrecipIntensityMax(), 0.001d);
-		assertEquals(expectedDailyData.getPrecipProbability(), actualDailyData.getPrecipProbability());
-		assertEquals(expectedDailyData.getTemperatureMin(), actualDailyData.getTemperatureMin(), 0.001d);
+		assertDouble(expectedDailyData.getMoonPhase(), actualDailyData.getMoonPhase(), 0.001d);
+		assertDouble(expectedDailyData.getPrecipIntensity(), actualDailyData.getPrecipIntensity(), 0.001d);
+		assertDouble(expectedDailyData.getPrecipIntensityMax(), actualDailyData.getPrecipIntensityMax(), 0.001d);
+		assertDouble(expectedDailyData.getPrecipProbability(), actualDailyData.getPrecipProbability(), 0.001d);
+		assertDouble(expectedDailyData.getTemperatureMin(), actualDailyData.getTemperatureMin(), 0.001d);
 		assertEquals(expectedDailyData.getTemperatureMinTime(), actualDailyData.getTemperatureMinTime());
-		assertEquals(expectedDailyData.getApparentTemperatureMin(), actualDailyData.getApparentTemperatureMin(), 0.001d);
+		assertDouble(expectedDailyData.getApparentTemperatureMin(), actualDailyData.getApparentTemperatureMin(), 0.001d);
 		assertEquals(expectedDailyData.getApparentTemperatureMinTime(), actualDailyData.getApparentTemperatureMinTime());
-		assertEquals(expectedDailyData.getApparentTemperatureMax(), actualDailyData.getApparentTemperatureMax(), 0.001d);
+		assertDouble(expectedDailyData.getApparentTemperatureMax(), actualDailyData.getApparentTemperatureMax(), 0.001d);
 		assertEquals(expectedDailyData.getApparentTemperatureMaxTime(), actualDailyData.getApparentTemperatureMaxTime());
-		assertEquals(expectedDailyData.getDewPoint(), actualDailyData.getDewPoint());
+		assertDouble(expectedDailyData.getDewPoint(), actualDailyData.getDewPoint(), 0.001d);
 		assertEquals(expectedDailyData.getHumidity(), actualDailyData.getHumidity());
-		assertEquals(expectedDailyData.getWindSpeed(), actualDailyData.getWindSpeed());
-		assertEquals(expectedDailyData.getWindBearing(), actualDailyData.getWindBearing());
-		assertEquals(expectedDailyData.getCloudCover(), actualDailyData.getCloudCover());
-		assertEquals(expectedDailyData.getPressure(), actualDailyData.getPressure());
-		assertEquals(expectedDailyData.getOzone(), actualDailyData.getOzone());
+		assertDouble(expectedDailyData.getWindSpeed(), actualDailyData.getWindSpeed(), 0.001d);
+		assertDouble(expectedDailyData.getWindBearing(), actualDailyData.getWindBearing(), 0.001d);
+		assertDouble(expectedDailyData.getCloudCover(), actualDailyData.getCloudCover(), 0.001d);
+		assertDouble(expectedDailyData.getPressure(), actualDailyData.getPressure(), 0.001d);
+		assertDouble(expectedDailyData.getOzone(), actualDailyData.getOzone(), 0.001d);
 	}
 	
 	private void assertWeatherData(WeatherData expected, WeatherData actual) {

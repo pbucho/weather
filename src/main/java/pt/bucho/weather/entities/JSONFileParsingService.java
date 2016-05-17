@@ -16,14 +16,14 @@ import pt.bucho.weather.services.JSONParsingService;
 public class JSONFileParsingService implements JSONParsingService {
 
 	private String path;
-	private Request request;
+	private Report request;
 
 	public JSONFileParsingService(String filePath) {
 		this.path = filePath;
 	}
 
 	public void parse() {
-		request = new Request();
+		request = new Report();
 		JSONParser parser = new JSONParser();
 		try {
 			JSONObject json = (JSONObject) parser.parse(new FileReader(path));
@@ -77,6 +77,34 @@ public class JSONFileParsingService implements JSONParsingService {
 				hourlyData.setData(i, thisHour);
 			}
 			request.setHourly(hourlyData);
+			
+			daily = (JSONObject) ((JSONArray) daily.get("data")).get(0);
+			DailyWeatherData dailyData = new DailyWeatherData();
+			dailyData.setTime(new DateTime((Long) daily.get("time") * 1000));
+			dailyData.setSummary(String.valueOf(daily.get("summary")));
+			dailyData.setIcon(String.valueOf(daily.get("icon")));
+			dailyData.setSunriseTime(new DateTime((Long) daily.get("sunriseTime") * 1000));
+			dailyData.setSunsetTime(new DateTime((Long) daily.get("sunsetTime") * 1000));
+			dailyData.setMoonPhase(parseDouble(daily.get("moonPhase")));
+			dailyData.setPrecipIntensity(parseDouble(daily.get("precipIntensity")));
+			dailyData.setPrecipIntensityMax(parseDouble(daily.get("precipIntensityMax")));
+			dailyData.setPrecipProbability(parseDouble(daily.get("precipProbability")));
+			dailyData.setTemperatureMin(parseDouble(daily.get("temperatureMin")));
+			dailyData.setTemperatureMinTime(new DateTime((Long) daily.get("temperatureMinTime") * 1000));
+			dailyData.setTemperatureMax(parseDouble(daily.get("temperatureMax")));
+			dailyData.setTemperatureMaxTime(new DateTime((Long) daily.get("temperatureMaxTime") * 1000));
+			dailyData.setApparentTemperatureMin(parseDouble(daily.get("apparentTemperatureMin")));
+			dailyData.setApparentTemperatureMinTime(new DateTime((Long) daily.get("apparentTemperatureMinTime") * 1000));
+			dailyData.setApparentTemperatureMax(parseDouble(daily.get("apparentTemperatureMax")));
+			dailyData.setApparentTemperatureMaxTime(new DateTime((Long) daily.get("apparentTemperatureMaxTime") * 1000));
+			dailyData.setDewPoint(parseDouble(daily.get("dewPoint")));
+			dailyData.setHumidity(parseDouble(daily.get("humidity")));
+			dailyData.setWindSpeed(parseDouble(daily.get("windSpeed")));
+			dailyData.setWindBearing(parseDouble(daily.get("windBearing")));
+			dailyData.setCloudCover(parseDouble(daily.get("cloudCover")));
+			dailyData.setPressure(parseDouble(daily.get("pressure")));
+			dailyData.setOzone(parseDouble(daily.get("ozone")));
+			request.setDaily(dailyData);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -86,7 +114,7 @@ public class JSONFileParsingService implements JSONParsingService {
 		}
 	}
 	
-	public Request getResult() {
+	public Report getResult() {
 		return request;
 	}
 	
