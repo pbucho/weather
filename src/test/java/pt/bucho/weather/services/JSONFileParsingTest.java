@@ -8,20 +8,24 @@ import org.joda.time.DateTimeZone;
 import org.junit.Before;
 import org.junit.Test;
 
+import pt.bucho.weather.AbstractTest;
 import pt.bucho.weather.entities.DailyWeatherData;
 import pt.bucho.weather.entities.HourlyWeatherData;
-import pt.bucho.weather.entities.JSONFileParsingService;
 import pt.bucho.weather.entities.Report;
 import pt.bucho.weather.entities.WeatherData;
 
-public class JSONFileParsingServiceTest {
+public class JSONFileParsingTest extends AbstractTest {
 
 	private JSONParsingService parsingService;
+	private JSONParserFactory parserFactory;
+	
 	private Report expectedRequest;
 	private Report actualRequest;
 	
 	@Before
 	public void setUp() {
+		parserFactory = new LocalJSONFactory("src/test/resources/example1.json");
+		
 		expectedRequest = new Report();
 		expectedRequest.setLatitude(38.425f);
 		expectedRequest.setLongitude(-9.822f);
@@ -488,9 +492,9 @@ public class JSONFileParsingServiceTest {
 	
 	@Test
 	public void happyPath() {
-		parsingService = new JSONFileParsingService("src/test/resources/example1.json");
+		parsingService = new JSONParsingServiceImpl(parserFactory);
 		parsingService.parse();
-		actualRequest = parsingService.getResult();
+		actualRequest = parsingService.getReport();
 		
 		assertEquals(expectedRequest.getLatitude(), actualRequest.getLatitude(), 0.001d);
 		assertEquals(expectedRequest.getLongitude(), actualRequest.getLongitude(), 0.001d);

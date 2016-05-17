@@ -1,36 +1,37 @@
-package pt.bucho.weather.entities;
+package pt.bucho.weather.services;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import pt.bucho.weather.services.JSONParsingService;
+import pt.bucho.weather.entities.DailyWeatherData;
+import pt.bucho.weather.entities.HourlyWeatherData;
+import pt.bucho.weather.entities.Report;
+import pt.bucho.weather.entities.WeatherData;
 
-public class JSONFileParsingService implements JSONParsingService {
+public class JSONParsingServiceImpl implements JSONParsingService {
 
-	private String path;
-	private Report request;
+	private JSONParserFactory parserFactory;
+	
+	private Report report;
 
-	public JSONFileParsingService(String filePath) {
-		this.path = filePath;
+	public JSONParsingServiceImpl(JSONParserFactory parserFactory) {
+		this.parserFactory = parserFactory;
 	}
-
+	
 	public void parse() {
-		request = new Report();
-		JSONParser parser = new JSONParser();
+		report = new Report();
 		try {
-			JSONObject json = (JSONObject) parser.parse(new FileReader(path));
-			request.setLatitude((Double) json.get("latitude"));
-			request.setLongitude((Double) json.get("longitude"));
-			request.setTimezone(DateTimeZone.forID((String) json.get("timezone")));
-			request.setOffset((Long) json.get("offset"));
+			JSONObject json = parserFactory.getRoot();
+			report.setLatitude((Double) json.get("latitude"));
+			report.setLongitude((Double) json.get("longitude"));
+			report.setTimezone(DateTimeZone.forID((String) json.get("timezone")));
+			report.setOffset((Long) json.get("offset"));
 			JSONObject currently = (JSONObject) json.get("currently");
 			JSONObject hourly = (JSONObject) json.get("hourly");
 			JSONObject daily = (JSONObject) json.get("daily");
@@ -50,7 +51,7 @@ public class JSONFileParsingService implements JSONParsingService {
 			currentlyData.setCloudCover(parseDouble(currently.get("cloudCover")));
 			currentlyData.setPressure(parseDouble(currently.get("pressure")));
 			currentlyData.setOzone(parseDouble(currently.get("ozone")));
-			request.setCurrently(currentlyData);
+			report.setCurrently(currentlyData);
 
 			HourlyWeatherData hourlyData = new HourlyWeatherData();
 			hourlyData.setSummary(String.valueOf(hourly.get("summary")));
@@ -76,7 +77,7 @@ public class JSONFileParsingService implements JSONParsingService {
 				thisHour.setOzone(parseDouble(obj.get("ozone")));
 				hourlyData.setData(i, thisHour);
 			}
-			request.setHourly(hourlyData);
+			report.setHourly(hourlyData);
 			
 			daily = (JSONObject) ((JSONArray) daily.get("data")).get(0);
 			DailyWeatherData dailyData = new DailyWeatherData();
@@ -104,7 +105,7 @@ public class JSONFileParsingService implements JSONParsingService {
 			dailyData.setCloudCover(parseDouble(daily.get("cloudCover")));
 			dailyData.setPressure(parseDouble(daily.get("pressure")));
 			dailyData.setOzone(parseDouble(daily.get("ozone")));
-			request.setDaily(dailyData);
+			report.setDaily(dailyData);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -114,8 +115,8 @@ public class JSONFileParsingService implements JSONParsingService {
 		}
 	}
 	
-	public Report getResult() {
-		return request;
+	public Report getReport() {
+		return report;
 	}
 	
 	private static Double parseDouble(Object element) {
@@ -130,5 +131,5 @@ public class JSONFileParsingService implements JSONParsingService {
 			}
 		}
 	}
-
+	
 }
