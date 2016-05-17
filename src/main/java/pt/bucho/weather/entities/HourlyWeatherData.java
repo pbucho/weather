@@ -20,6 +20,13 @@ public class HourlyWeatherData {
 	public void setHourly(WeatherData[] hourly) {
 		this.hourly = hourly;
 	}
+	
+	public int getHourDataSize() {
+		if(hourly != null){
+			return hourly.length;
+		}
+		return 0;
+	}
 
 	public void setData(int time, WeatherData weatherData) {
 		if (time < 0 || time > 23) {
