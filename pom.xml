@@ -64,9 +64,10 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<mainClass>pt.bucho.weather.frontend.FileListParsing</mainClass>
-				</configuration>
+				<!-- EXECUTION -->
+				<!-- mvn exec:java -->
+				<!-- -Dexec.mainClass="com.example.MainClass" -->
+				<!-- -Dexec.args="arg1 arg2 ..." -->
 			</plugin>
 		</plugins>
 	</build>
