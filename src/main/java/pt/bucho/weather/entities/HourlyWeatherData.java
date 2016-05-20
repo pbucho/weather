@@ -1,47 +1,38 @@
 package pt.bucho.weather.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HourlyWeatherData {
 
-	private WeatherData[] hourly;
+	private List<WeatherData> hourly;
 	private String summary;
 	private String icon;
 
 	public HourlyWeatherData() {
-		hourly = new WeatherData[24];
-		for (int i = 0; i < hourly.length; i++) {
-			hourly[i] = new WeatherData();
-		}
+		hourly = new ArrayList<WeatherData>(24);
 	}
 
-	public WeatherData[] getHourly() {
+	public List<WeatherData> getHourly() {
 		return hourly;
 	}
 
-	public void setHourly(WeatherData[] hourly) {
-		this.hourly = hourly;
-	}
-	
 	public int getHourDataSize() {
-		if(hourly != null){
-			return hourly.length;
-		}
-		return 0;
+		return hourly != null ? hourly.size() : 0;
 	}
 
 	public void setData(int time, WeatherData weatherData) {
-		if (time < 0 || time > 23) {
-			throw new java.lang.IllegalArgumentException(
-					"Time must be between 0 and 23");
+		if (time < 0) {
+			throw new java.lang.IllegalArgumentException("Time must greater or equal than 0");
 		}
-		hourly[time] = weatherData;
+		hourly.add(time, weatherData);
 	}
 
 	public WeatherData getData(int time) {
-		if (time < 0 || time > 23) {
-			throw new java.lang.IllegalArgumentException(
-					"Time must be between 0 and 23");
+		if (time < 0) {
+			throw new java.lang.IllegalArgumentException("Time must greater or equal than 0");
 		}
-		return hourly[time];
+		return hourly.get(time);
 	}
 
 	public String getSummary() {
