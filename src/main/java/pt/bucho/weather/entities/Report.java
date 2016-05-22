@@ -2,32 +2,25 @@ package pt.bucho.weather.entities;
 
 import org.joda.time.DateTimeZone;
 
+import pt.bucho.utilities.geopt.District;
+
 public class Report {
 
-	private double latitude;
-	private double longitude;
+	private District district;
 	private DateTimeZone timezone;
 	private long offset;
 	private WeatherData currently;
 	private HourlyWeatherData hourly;
 	private DailyWeatherData daily;
 
-	public double getLatitude() {
-		return latitude;
+	public District getDistrict() {
+		return district;
 	}
-
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
+	
+	public void setDistrict(District district) {
+		this.district = district;
 	}
-
-	public double getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
-	}
-
+	
 	public DateTimeZone getTimezone() {
 		return timezone;
 	}

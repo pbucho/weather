@@ -36,10 +36,10 @@ public class DistrictMappingService {
 		Set<District> matchingLatitude = new HashSet<District>();
 		Set<District> matchingLongitude= new HashSet<District>();
 		for (District key: latitude.keySet()) {
-			if(latitude.get(key).equals(lat)){
+			if(equals(latitude.get(key), lat, 0.09d)){
 				matchingLatitude.add(key);
 			}
-			if(longitude.get(key).equals(lon)){
+			if(equals(longitude.get(key), lon, 0.09d)){
 				matchingLongitude.add(key);
 			}
 		}
@@ -116,6 +116,12 @@ public class DistrictMappingService {
 		latitude.put(District.AZORES_AR, 37.44d);
 		longitude.put(District.AZORES_AR, -25.40d);
 		
+	}
+	
+	private static boolean equals(Double a, Double b, Double eps) {
+		if (a == b)
+			return true;
+		return Math.abs(a - b) < eps;
 	}
 
 }
