@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.joda.time.DateTimeZone;
@@ -20,8 +21,11 @@ public class Report {
 	private District district;
 	private DateTimeZone timezone;
 	private long offset;
+	@OneToOne
 	private WeatherData currently;
+	@OneToOne
 	private HourlyWeatherData hourly;
+	@OneToOne
 	private DailyWeatherData daily;
 
 	public District getDistrict() {

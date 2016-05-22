@@ -34,6 +34,7 @@ public class FileListParsing {
 			
 			Configuration cfg = new DefaultHibernateConfigurationFactory().getConfiguration();
 			cfg.buildSessionFactory();
+			System.exit(0);
 		}
 		
 	}

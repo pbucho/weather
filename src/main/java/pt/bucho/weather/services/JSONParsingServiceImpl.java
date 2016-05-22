@@ -31,10 +31,7 @@ public class JSONParsingServiceImpl implements JSONParsingService {
 			JSONObject json = parserFactory.getRoot();
 			Double latitude = (Double) json.get("latitude");
 			Double longitude = (Double) json.get("longitude");
-			
-			// TODO: district
 			report.setDistrict(mappingService.getDistrictByCoordinates(latitude, longitude));
-			
 			report.setTimezone(DateTimeZone.forID((String) json.get("timezone")));
 			report.setOffset((Long) json.get("offset"));
 			JSONObject currently = (JSONObject) json.get("currently");
