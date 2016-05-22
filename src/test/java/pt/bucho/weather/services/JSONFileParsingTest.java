@@ -25,12 +25,8 @@ public class JSONFileParsingTest extends AbstractTest {
 	
 	@Before
 	public void setUp() {
-		parserFactory = new LocalJSONFactory("src/test/resources/example1.json");
 		
 		expectedRequest = new Report();
-//		expectedRequest.setLatitude(38.425f);
-//		expectedRequest.setLongitude(-9.822f);
-		expectedRequest.setDistrict(District.LISBOA);
 		expectedRequest.setTimezone(DateTimeZone.forID("Europe/Lisbon"));
 		expectedRequest.setOffset(1);
 		
@@ -494,12 +490,29 @@ public class JSONFileParsingTest extends AbstractTest {
 	
 	@Test
 	public void happyPath() {
+		parserFactory = new LocalJSONFactory("src/test/resources/example1.json");
+		expectedRequest.setDistrict(District.LISBOA);
+		
 		parsingService = new JSONParsingServiceImpl(parserFactory);
 		parsingService.parse();
 		actualRequest = parsingService.getReport();
 		
-//		assertEquals(expectedRequest.getLatitude(), actualRequest.getLatitude(), 0.09d);
-//		assertEquals(expectedRequest.getLongitude(), actualRequest.getLongitude(), 0.09d);
+		assertions();
+	}
+	
+	@Test
+	public void faro() {
+		parserFactory = new LocalJSONFactory("src/test/resources/dir/example2.json");
+		expectedRequest.setDistrict(District.FARO);
+		
+		parsingService = new JSONParsingServiceImpl(parserFactory);
+		parsingService.parse();
+		actualRequest = parsingService.getReport();
+		
+		assertions();
+	}
+	
+	private void assertions() {
 		assertEquals(expectedRequest.getDistrict(), actualRequest.getDistrict());
 		assertEquals(expectedRequest.getTimezone(), actualRequest.getTimezone());
 		assertEquals(expectedRequest.getOffset(), actualRequest.getOffset());
