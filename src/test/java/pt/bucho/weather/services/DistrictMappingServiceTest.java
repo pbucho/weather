@@ -1,6 +1,7 @@
 package pt.bucho.weather.services;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -132,8 +133,112 @@ public class DistrictMappingServiceTest {
 
 	@Test
 	public void acores() {
-		assertEquals(40.37d, mappingService.getLatitude(District.AZORES_AR), 0.001d);
-		assertEquals(-8.38d, mappingService.getLongitude(District.AZORES_AR), 0.001d);
+		assertEquals(37.44d, mappingService.getLatitude(District.AZORES_AR), 0.001d);
+		assertEquals(-25.40d, mappingService.getLongitude(District.AZORES_AR), 0.001d);
+	}
+	
+	@Test
+	public void reverseMappingLisboa() {
+		assertEquals(District.LISBOA, mappingService.getDistrictByCoordinates(38.42d, -9.8d));
+	}
+	
+	@Test
+	public void reverseMappingAveiro() {
+		assertEquals(District.AVEIRO, mappingService.getDistrictByCoordinates(40.37d, -8.38d));
 	}
 
+	@Test
+	public void reverseMappingBeja() {
+		assertEquals(District.BEJA, mappingService.getDistrictByCoordinates(38.01d, -7.52d));
+	}
+
+	@Test
+	public void reverseMappingBraga() {
+		assertEquals(District.BRAGA, mappingService.getDistrictByCoordinates(41.32d, -8.25d));
+	}
+
+	@Test
+	public void reverseMappingBraganca() {
+		assertEquals(District.BRAGANCA, mappingService.getDistrictByCoordinates(41.48d, -6.45d));
+	}
+
+	@Test
+	public void reverseMappingCasteloBranco() {
+		assertEquals(District.CASTELO_BRANCO, mappingService.getDistrictByCoordinates(39.50d, -7.28d));
+	}
+
+	@Test
+	public void reverseMappingCoimbra() {
+		assertEquals(District.COIMBRA, mappingService.getDistrictByCoordinates(40.15d, -8.27d));
+	}
+
+	@Test
+	public void reverseMappingEvora() {
+		assertEquals(District.EVORA, mappingService.getDistrictByCoordinates(38.34d, -7.54d));
+	}
+
+	@Test
+	public void reverseMappingFaro() {
+		assertEquals(District.FARO, mappingService.getDistrictByCoordinates(37.02d, -7.55d));
+	}
+
+	@Test
+	public void reverseMappingGuarda() {
+		assertEquals(District.GUARDA, mappingService.getDistrictByCoordinates(40.32d, -7.20d));
+	}
+
+	@Test
+	public void reverseMappingLeiria() {
+		assertEquals(District.LEIRIA, mappingService.getDistrictByCoordinates(39.45d, -8.48d));
+	}
+
+	@Test
+	public void reverseMappingPortalegre() {
+		assertEquals(District.PORTALEGRE, mappingService.getDistrictByCoordinates(39.19d, -7.25d));
+	}
+
+	@Test
+	public void reverseMappingPorto() {
+		assertEquals(District.PORTO, mappingService.getDistrictByCoordinates(41.94d, -8.37d));
+	}
+
+	@Test
+	public void reverseMappingSantarem() {
+		assertEquals(District.SANTAREM, mappingService.getDistrictByCoordinates(39.14d, -8.41d));
+	}
+
+	@Test
+	public void reverseMappingSetubal() {
+		assertEquals(District.SETUBAL, mappingService.getDistrictByCoordinates(38.31d, -8.53d));
+	}
+
+	@Test
+	public void reverseMappingVianaDoCastelo() {
+		assertEquals(District.VIANA_DO_CASTELO, mappingService.getDistrictByCoordinates(41.42d, -8.50d));
+	}
+
+	@Test
+	public void reverseMappingVilaReal() {
+		assertEquals(District.VILA_REAL, mappingService.getDistrictByCoordinates(41.17d, -7.55d));
+	}
+
+	@Test
+	public void reverseMappingViseu() {
+		assertEquals(District.VISEU, mappingService.getDistrictByCoordinates(40.40d, -7.55d));
+	}
+
+	@Test
+	public void reverseMappingMadeira() {
+		assertEquals(District.MADEIRA_AR, mappingService.getDistrictByCoordinates(32.39d, -16.54d));
+	}
+
+	@Test
+	public void reverseMappingAcores() {
+		assertEquals(District.AZORES_AR, mappingService.getDistrictByCoordinates(37.44d, -25.40d));
+	}
+	
+	@Test
+	public void reverseMappingNonExisting() {
+		assertNull(mappingService.getDistrictByCoordinates(1234d, 5678d));
+	}
 }

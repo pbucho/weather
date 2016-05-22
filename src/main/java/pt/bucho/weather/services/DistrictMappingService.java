@@ -1,7 +1,9 @@
 package pt.bucho.weather.services;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import pt.bucho.utilities.geopt.District;
 
@@ -11,7 +13,7 @@ public class DistrictMappingService {
 	
 	private static Map<District, Double> latitude;
 	private static Map<District, Double> longitude;
-
+	
 	private DistrictMappingService() {
 	}
 	
@@ -28,6 +30,24 @@ public class DistrictMappingService {
 
 	public Double getLongitude(District district) {
 		return longitude.get(district);
+	}
+	
+	public District getDistrictByCoordinates(Double lat, Double lon) {
+		Set<District> matchingLatitude = new HashSet<District>();
+		Set<District> matchingLongitude= new HashSet<District>();
+		for (District key: latitude.keySet()) {
+			if(latitude.get(key).equals(lat)){
+				matchingLatitude.add(key);
+			}
+			if(longitude.get(key).equals(lon)){
+				matchingLongitude.add(key);
+			}
+		}
+		matchingLatitude.retainAll(matchingLongitude);
+		if(matchingLatitude.isEmpty())
+			return null;
+		else
+			return matchingLatitude.iterator().next();
 	}
 	
 	private static void initializeService() {
@@ -93,8 +113,8 @@ public class DistrictMappingService {
 		latitude.put(District.MADEIRA_AR, 32.39d);
 		longitude.put(District.MADEIRA_AR, -16.54d);
 		
-		latitude.put(District.AZORES_AR, 40.37d);
-		longitude.put(District.AZORES_AR, -8.38d);
+		latitude.put(District.AZORES_AR, 37.44d);
+		longitude.put(District.AZORES_AR, -25.40d);
 		
 	}
 
