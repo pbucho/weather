@@ -3,8 +3,19 @@ package pt.bucho.weather.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "hourly_data")
 public class HourlyWeatherData {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private int id;
 	private List<WeatherData> hourly;
 	private String summary;
 	private String icon;

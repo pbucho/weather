@@ -1,9 +1,20 @@
 package pt.bucho.weather.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.joda.time.DateTime;
 
+@Entity
+@Table(name = "weather_data")
 public class WeatherData {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	protected int id;
 	protected DateTime time;
 	protected String summary;
 	protected String icon;

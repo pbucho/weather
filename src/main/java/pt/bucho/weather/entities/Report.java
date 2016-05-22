@@ -1,11 +1,22 @@
 package pt.bucho.weather.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.joda.time.DateTimeZone;
 
 import pt.bucho.utilities.geopt.District;
 
+@Entity
+@Table(name = "report")
 public class Report {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private int id;
 	private District district;
 	private DateTimeZone timezone;
 	private long offset;
