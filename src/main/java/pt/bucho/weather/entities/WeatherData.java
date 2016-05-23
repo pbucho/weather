@@ -35,6 +35,14 @@ public class WeatherData {
 		return time;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
 	public void setTime(DateTime time) {
 		this.time = time;
 	}

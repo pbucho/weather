@@ -20,14 +20,22 @@ public class Report {
 	private int id;
 	private District district;
 	private DateTimeZone timezone;
-	private long offset;
-	@OneToOne
+	private long timezoneOffset;
+	@OneToOne(targetEntity = WeatherData.class)
 	private WeatherData currently;
-	@OneToOne
+	@OneToOne(targetEntity = HourlyWeatherData.class)
 	private HourlyWeatherData hourly;
-	@OneToOne
+	@OneToOne(targetEntity = DailyWeatherData.class)
 	private DailyWeatherData daily;
 
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public District getDistrict() {
 		return district;
 	}
@@ -44,12 +52,12 @@ public class Report {
 		this.timezone = timezone;
 	}
 
-	public long getOffset() {
-		return offset;
+	public long getTimezoneOffset() {
+		return timezoneOffset;
 	}
 
-	public void setOffset(long offset) {
-		this.offset = offset;
+	public void setTimezoneOffset(long offset) {
+		this.timezoneOffset = offset;
 	}
 
 	public WeatherData getCurrently() {

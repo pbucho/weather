@@ -1,12 +1,10 @@
 package pt.bucho.weather.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import org.joda.time.DateTime;
 
 @Entity
-@Table(name = "daily_data")
 public class DailyWeatherData extends WeatherData {
 
 	private DateTime sunriseTime;

@@ -1,9 +1,11 @@
 package pt.bucho.weather.entities;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,12 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "hourly_data")
-public class HourlyWeatherData {
+public class HourlyWeatherData implements Iterable<WeatherData> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
-	@OneToMany
+	@OneToMany(targetEntity = WeatherData.class, fetch = FetchType.EAGER)
 	private List<WeatherData> hourly;
 	private String summary;
 	private String icon;
@@ -62,6 +64,10 @@ public class HourlyWeatherData {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
+	}
+
+	public Iterator<WeatherData> iterator() {
+		return hourly.iterator();
 	}
 	
 }

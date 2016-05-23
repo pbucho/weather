@@ -33,7 +33,7 @@ public class JSONParsingServiceImpl implements JSONParsingService {
 			Double longitude = (Double) json.get("longitude");
 			report.setDistrict(mappingService.getDistrictByCoordinates(latitude, longitude));
 			report.setTimezone(DateTimeZone.forID((String) json.get("timezone")));
-			report.setOffset((Long) json.get("offset"));
+			report.setTimezoneOffset((Long) json.get("offset"));
 			JSONObject currently = (JSONObject) json.get("currently");
 			JSONObject hourly = (JSONObject) json.get("hourly");
 			JSONObject daily = (JSONObject) json.get("daily");
