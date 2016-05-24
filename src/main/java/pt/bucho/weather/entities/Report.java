@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.joda.time.DateTimeZone;
+
 import pt.bucho.utilities.geopt.District;
 
 @Entity
@@ -42,8 +44,12 @@ public class Report {
 		this.district = district;
 	}
 	
-	public String getTimezone() {
+	public String getTimezoneString() {
 		return timezone;
+	}
+	
+	public DateTimeZone getTimezone() {
+		return DateTimeZone.forID(timezone);
 	}
 
 	public void setTimezone(String timezone) {

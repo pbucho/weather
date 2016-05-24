@@ -484,7 +484,7 @@ public class AbstractTest {
 	
 	protected void assertions() {
 		assertEquals(expectedReport.getDistrict(), actualReport.getDistrict());
-		assertEquals(expectedReport.getTimezone(), actualReport.getTimezone());
+		assertEquals(expectedReport.getTimezoneString(), actualReport.getTimezoneString());
 		assertEquals(expectedReport.getTimezoneOffset(), actualReport.getTimezoneOffset());
 		
 		assertWeatherData(expectedReport.getCurrently(), actualReport.getCurrently());
@@ -499,21 +499,21 @@ public class AbstractTest {
 		DailyWeatherData expectedDailyData = expectedReport.getDaily();
 		DailyWeatherData actualDailyData = actualReport.getDaily();
 		
-		assertEquals(expectedDailyData.getTime(), actualDailyData.getTime());
+		assertEquals(expectedDailyData.getTimeLong(), actualDailyData.getTimeLong());
 		assertEquals(expectedDailyData.getSummary(), actualDailyData.getSummary());
 		assertEquals(expectedDailyData.getIcon(), actualDailyData.getIcon());
-		assertEquals(expectedDailyData.getSunriseTime(), actualDailyData.getSunriseTime());
+		assertEquals(expectedDailyData.getSunriseTimeLong(), actualDailyData.getSunriseTimeLong());
 		assertEquals(expectedDailyData.getSunsetTime(), actualDailyData.getSunsetTime());
 		assertDouble(expectedDailyData.getMoonPhase(), actualDailyData.getMoonPhase(), 0.09d);
 		assertDouble(expectedDailyData.getPrecipIntensity(), actualDailyData.getPrecipIntensity(), 0.09d);
 		assertDouble(expectedDailyData.getPrecipIntensityMax(), actualDailyData.getPrecipIntensityMax(), 0.09d);
 		assertDouble(expectedDailyData.getPrecipProbability(), actualDailyData.getPrecipProbability(), 0.09d);
 		assertDouble(expectedDailyData.getTemperatureMin(), actualDailyData.getTemperatureMin(), 0.09d);
-		assertEquals(expectedDailyData.getTemperatureMinTime(), actualDailyData.getTemperatureMinTime());
+		assertEquals(expectedDailyData.getTemperatureMinTimeLong(), actualDailyData.getTemperatureMinTimeLong());
 		assertDouble(expectedDailyData.getApparentTemperatureMin(), actualDailyData.getApparentTemperatureMin(), 0.09d);
-		assertEquals(expectedDailyData.getApparentTemperatureMinTime(), actualDailyData.getApparentTemperatureMinTime());
+		assertEquals(expectedDailyData.getApparentTemperatureMinTimeLong(), actualDailyData.getApparentTemperatureMinTimeLong());
 		assertDouble(expectedDailyData.getApparentTemperatureMax(), actualDailyData.getApparentTemperatureMax(), 0.09d);
-		assertEquals(expectedDailyData.getApparentTemperatureMaxTime(), actualDailyData.getApparentTemperatureMaxTime());
+		assertEquals(expectedDailyData.getApparentTemperatureMaxTimeLong(), actualDailyData.getApparentTemperatureMaxTimeLong());
 		assertDouble(expectedDailyData.getDewPoint(), actualDailyData.getDewPoint(), 0.09d);
 		assertEquals(expectedDailyData.getHumidity(), actualDailyData.getHumidity());
 		assertDouble(expectedDailyData.getWindSpeed(), actualDailyData.getWindSpeed(), 0.09d);
@@ -524,7 +524,7 @@ public class AbstractTest {
 	}
 	
 	protected void assertWeatherData(WeatherData expected, WeatherData actual) {
-		assertEquals(expected.getTime(), actual.getTime());
+		assertEquals(expected.getTimeLong(), actual.getTimeLong());
 		assertEquals(expected.getSummary(), actual.getSummary());
 		assertEquals(expected.getIcon(), actual.getIcon());
 		assertEquals(expected.getPrecipIntensity(), actual.getPrecipIntensity(), 0.09d);
@@ -546,7 +546,7 @@ public class AbstractTest {
 			WeatherData expectThis = expected.getData(i);
 			WeatherData actualThis = actual.getData(i);
 			
-			assertEquals(expectThis.getTime(), actualThis.getTime());
+			assertEquals(expectThis.getTimeLong(), actualThis.getTimeLong());
 			assertEquals(expectThis.getSummary(), actualThis.getSummary());
 			assertString(expectThis.getIcon(), actualThis.getIcon());
 			assertString(expectThis.getPrecipType(), actualThis.getPrecipType());

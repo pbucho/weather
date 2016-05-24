@@ -2,6 +2,8 @@ package pt.bucho.weather.entities;
 
 import javax.persistence.Entity;
 
+import org.joda.time.DateTime;
+
 @Entity
 public class DailyWeatherData extends WeatherData {
 
@@ -18,16 +20,24 @@ public class DailyWeatherData extends WeatherData {
 	private Double apparentTemperatureMax;
 	private Long apparentTemperatureMaxTime;
 
-	public Long getSunriseTime() {
+	public Long getSunriseTimeLong() {
 		return sunriseTime;
+	}
+	
+	public DateTime getSunriseTime() {
+		return new DateTime(sunriseTime);
 	}
 
 	public void setSunriseTime(Long sunriseTime) {
 		this.sunriseTime = sunriseTime;
 	}
 
-	public Long getSunsetTime() {
+	public Long getSunsetTimeLong() {
 		return sunsetTime;
+	}
+	
+	public DateTime getSunsetTime() {
+		return new DateTime(sunsetTime);
 	}
 
 	public void setSunsetTime(Long sunsetTime) {
@@ -58,8 +68,12 @@ public class DailyWeatherData extends WeatherData {
 		this.temperatureMin = temperatureMin;
 	}
 
-	public Long getTemperatureMinTime() {
+	public Long getTemperatureMinTimeLong() {
 		return temperatureMinTime;
+	}
+	
+	public DateTime getTemperatureMinTime() {
+		return new DateTime(temperatureMinTime);
 	}
 
 	public void setTemperatureMinTime(Long temperatureMinTime) {
@@ -74,8 +88,12 @@ public class DailyWeatherData extends WeatherData {
 		this.temperatureMax = temperatureMax;
 	}
 
-	public Long getTemperatureMaxTime() {
+	public Long getTemperatureMaxTimeLong() {
 		return temperatureMaxTime;
+	}
+	
+	public DateTime getTemperatureMaxTime() {
+		return new DateTime(temperatureMaxTime);
 	}
 
 	public void setTemperatureMaxTime(Long temperatureMaxTime) {
@@ -90,8 +108,12 @@ public class DailyWeatherData extends WeatherData {
 		this.apparentTemperatureMin = apparentTemperatureMin;
 	}
 
-	public Long getApparentTemperatureMinTime() {
+	public Long getApparentTemperatureMinTimeLong() {
 		return apparentTemperatureMinTime;
+	}
+	
+	public DateTime getApparentTemperatureMinTime() {
+		return new DateTime(apparentTemperatureMinTime);
 	}
 
 	public void setApparentTemperatureMinTime(Long apparentTemperatureMinTime) {
@@ -106,8 +128,12 @@ public class DailyWeatherData extends WeatherData {
 		this.apparentTemperatureMax = apparentTemperatureMax;
 	}
 
-	public Long getApparentTemperatureMaxTime() {
+	public Long getApparentTemperatureMaxTimeLong() {
 		return apparentTemperatureMaxTime;
+	}
+	
+	public DateTime getApparentTemperatureMaxTime() {
+		return new DateTime(apparentTemperatureMaxTime);
 	}
 
 	public void setApparentTemperatureMaxTime(Long apparentTemperatureMaxTime) {

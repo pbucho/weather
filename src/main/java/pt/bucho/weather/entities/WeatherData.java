@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.joda.time.DateTime;
+
 @Entity
 @Table(name = "weather_data")
 public class WeatherData {
@@ -29,7 +31,6 @@ public class WeatherData {
 	protected Double pressure;
 	protected Double ozone;
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -42,8 +43,12 @@ public class WeatherData {
 		this.time = time;
 	}
 
-	public Long getTime() {
+	public Long getTimeLong() {
 		return time;
+	}
+	
+	public DateTime getTime() {
+		return new DateTime(time);
 	}
 	
 	public String getSummary() {
