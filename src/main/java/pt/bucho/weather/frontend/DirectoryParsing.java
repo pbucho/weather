@@ -38,6 +38,7 @@ public class DirectoryParsing {
 		dao = new HibernateDAO(cfg.buildSessionFactory());
 
 		parseDirectory(new File(args[0]));
+		System.exit(0);
 	}
 
 	private static void parseDirectory(File directory) throws NotDirectoryException {
@@ -69,7 +70,6 @@ public class DirectoryParsing {
 			dao.saveReport(parsingService.getReport());
 			log.info("File " + file.getAbsolutePath() + " parsed");
 		}
-		System.exit(0);
 	}
 
 }
