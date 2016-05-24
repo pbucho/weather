@@ -3,8 +3,6 @@ package pt.bucho.weather.services;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -32,14 +30,14 @@ public class JSONParsingServiceImpl implements JSONParsingService {
 			Double latitude = (Double) json.get("latitude");
 			Double longitude = (Double) json.get("longitude");
 			report.setDistrict(mappingService.getDistrictByCoordinates(latitude, longitude));
-			report.setTimezone(DateTimeZone.forID((String) json.get("timezone")));
+			report.setTimezone((String) json.get("timezone"));
 			report.setTimezoneOffset((Long) json.get("offset"));
 			JSONObject currently = (JSONObject) json.get("currently");
 			JSONObject hourly = (JSONObject) json.get("hourly");
 			JSONObject daily = (JSONObject) json.get("daily");
 
 			WeatherData currentlyData = new WeatherData();
-			currentlyData.setTime(new DateTime((Long) currently.get("time") * 1000));
+			currentlyData.setTime((Long) currently.get("time") * 1000);
 			currentlyData.setSummary(String.valueOf(currently.get("summary")));
 			currentlyData.setIcon(String.valueOf(currently.get("icon")));
 			currentlyData.setPrecipIntensity(parseDouble(currently.get("precipIntensity")));
@@ -62,7 +60,7 @@ public class JSONParsingServiceImpl implements JSONParsingService {
 			for (int i = 0; i < hourlyArray.size(); i++) {
 				JSONObject obj = (JSONObject) hourlyArray.get(i);
 				WeatherData thisHour = new WeatherData();
-				thisHour.setTime(new DateTime((Long) obj.get("time") * 1000));
+				thisHour.setTime((Long) obj.get("time") * 1000);
 				thisHour.setSummary(String.valueOf(obj.get("summary")));
 				thisHour.setIcon(String.valueOf(obj.get("icon")));
 				thisHour.setPrecipIntensity(parseDouble(obj.get("precipIntensity")));
@@ -83,23 +81,23 @@ public class JSONParsingServiceImpl implements JSONParsingService {
 			
 			daily = (JSONObject) ((JSONArray) daily.get("data")).get(0);
 			DailyWeatherData dailyData = new DailyWeatherData();
-			dailyData.setTime(new DateTime((Long) daily.get("time") * 1000));
+			dailyData.setTime((Long) daily.get("time") * 1000);
 			dailyData.setSummary(String.valueOf(daily.get("summary")));
 			dailyData.setIcon(String.valueOf(daily.get("icon")));
-			dailyData.setSunriseTime(new DateTime((Long) daily.get("sunriseTime") * 1000));
-			dailyData.setSunsetTime(new DateTime((Long) daily.get("sunsetTime") * 1000));
+			dailyData.setSunriseTime((Long) daily.get("sunriseTime") * 1000);
+			dailyData.setSunsetTime((Long) daily.get("sunsetTime") * 1000);
 			dailyData.setMoonPhase(parseDouble(daily.get("moonPhase")));
 			dailyData.setPrecipIntensity(parseDouble(daily.get("precipIntensity")));
 			dailyData.setPrecipIntensityMax(parseDouble(daily.get("precipIntensityMax")));
 			dailyData.setPrecipProbability(parseDouble(daily.get("precipProbability")));
 			dailyData.setTemperatureMin(parseDouble(daily.get("temperatureMin")));
-			dailyData.setTemperatureMinTime(new DateTime((Long) daily.get("temperatureMinTime") * 1000));
+			dailyData.setTemperatureMinTime((Long) daily.get("temperatureMinTime") * 1000);
 			dailyData.setTemperatureMax(parseDouble(daily.get("temperatureMax")));
-			dailyData.setTemperatureMaxTime(new DateTime((Long) daily.get("temperatureMaxTime") * 1000));
+			dailyData.setTemperatureMaxTime((Long) daily.get("temperatureMaxTime") * 1000);
 			dailyData.setApparentTemperatureMin(parseDouble(daily.get("apparentTemperatureMin")));
-			dailyData.setApparentTemperatureMinTime(new DateTime((Long) daily.get("apparentTemperatureMinTime") * 1000));
+			dailyData.setApparentTemperatureMinTime((Long) daily.get("apparentTemperatureMinTime") * 1000);
 			dailyData.setApparentTemperatureMax(parseDouble(daily.get("apparentTemperatureMax")));
-			dailyData.setApparentTemperatureMaxTime(new DateTime((Long) daily.get("apparentTemperatureMaxTime") * 1000));
+			dailyData.setApparentTemperatureMaxTime((Long) daily.get("apparentTemperatureMaxTime") * 1000);
 			dailyData.setDewPoint(parseDouble(daily.get("dewPoint")));
 			dailyData.setHumidity(parseDouble(daily.get("humidity")));
 			dailyData.setWindSpeed(parseDouble(daily.get("windSpeed")));

@@ -5,8 +5,6 @@ import static org.junit.Assert.fail;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.junit.BeforeClass;
 
 import pt.bucho.weather.entities.DailyWeatherData;
@@ -24,11 +22,11 @@ public class AbstractTest {
 	@BeforeClass
 	public static void setUpBeforeAll() {
 		expectedReport = new Report();
-		expectedReport.setTimezone(DateTimeZone.forID("Europe/Lisbon"));
+		expectedReport.setTimezone("Europe/Lisbon");
 		expectedReport.setTimezoneOffset(1);
 		
 		WeatherData currently = new WeatherData();
-		currently.setTime(new DateTime(1463310000000L));
+		currently.setTime(1463310000000L);
 		currently.setSummary("Ligeiramente Nublado");
 		currently.setIcon("partly-cloudy-day");
 		currently.setPrecipIntensity(0d);
@@ -49,7 +47,7 @@ public class AbstractTest {
 		hourly.setIcon("wind");
 		
 		WeatherData hour0 = new WeatherData();
-		hour0.setTime(new DateTime(1463266800000L));
+		hour0.setTime(1463266800000L);
 		hour0.setSummary("Limpo");
 		hour0.setIcon("clear-night");
 		hour0.setPrecipIntensity(0d);
@@ -66,7 +64,7 @@ public class AbstractTest {
 		hourly.setData(0, hour0);
 		
 		WeatherData hour1 = new WeatherData();
-		hour1.setTime(new DateTime(1463270400000L));
+		hour1.setTime(1463270400000L);
 		hour1.setSummary("Limpo");
 		hour1.setIcon("clear-night");
 		hour1.setPrecipType("rain");
@@ -81,7 +79,7 @@ public class AbstractTest {
 		hourly.setData(1, hour1);
 		
 		WeatherData hour2 = new WeatherData();
-		hour2.setTime(new DateTime(1463274000000L));
+		hour2.setTime(1463274000000L);
 		hour2.setSummary("Limpo");
 		hour2.setIcon("clear-night");
 		hour2.setPrecipIntensity(0d);
@@ -98,7 +96,7 @@ public class AbstractTest {
 		hourly.setData(2, hour2);
 		
 		WeatherData hour3 = new WeatherData();
-		hour3.setTime(new DateTime(1463277600000L));
+		hour3.setTime(1463277600000L);
 		hour3.setSummary("Limpo");
 		hour3.setIcon("clear-night");
 		hour3.setPrecipIntensity(0d);
@@ -115,7 +113,7 @@ public class AbstractTest {
 		hourly.setData(3, hour3);
 		
 		WeatherData hour4 = new WeatherData();
-		hour4.setTime(new DateTime(1463281200000L));
+		hour4.setTime(1463281200000L);
 		hour4.setSummary("Limpo");
 		hour4.setIcon("clear-night");
 		hour4.setPrecipIntensity(0d);
@@ -132,7 +130,7 @@ public class AbstractTest {
 		hourly.setData(4, hour4);
 		
 		WeatherData hour5 = new WeatherData();
-		hour5.setTime(new DateTime(1463284800000L));
+		hour5.setTime(1463284800000L);
 		hour5.setSummary("Ligeiramente Nublado");
 		hour5.setIcon("partly-cloudy-night");
 		hour5.setPrecipIntensity(0d);
@@ -149,7 +147,7 @@ public class AbstractTest {
 		hourly.setData(5, hour5);
 		
 		WeatherData hour6 = new WeatherData();
-		hour6.setTime(new DateTime(1463288400000L));
+		hour6.setTime(1463288400000L);
 		hour6.setSummary("Ligeiramente Nublado");
 		hour6.setIcon("partly-cloudy-night");
 		hour6.setPrecipIntensity(0d);
@@ -166,7 +164,7 @@ public class AbstractTest {
 		hourly.setData(6, hour6);
 		
 		WeatherData hour7 = new WeatherData();
-		hour7.setTime(new DateTime(1463292000000L));
+		hour7.setTime(1463292000000L);
 		hour7.setSummary("Ligeiramente Nublado");
 		hour7.setIcon("partly-cloudy-day");
 		hour7.setPrecipIntensity(0d);
@@ -183,7 +181,7 @@ public class AbstractTest {
 		hourly.setData(7, hour7);
 		
 		WeatherData hour8 = new WeatherData();
-		hour8.setTime(new DateTime(1463295600000L));
+		hour8.setTime(1463295600000L);
 		hour8.setSummary("Ligeiramente Nublado");
 		hour8.setIcon("partly-cloudy-day");
 		hour8.setPrecipIntensity(0d);
@@ -200,7 +198,7 @@ public class AbstractTest {
 		hourly.setData(8, hour8);
 		
 		WeatherData hour9 = new WeatherData();
-		hour9.setTime(new DateTime(1463299200000L));
+		hour9.setTime(1463299200000L);
 		hour9.setSummary("Ligeiramente Nublado");
 		hour9.setIcon("partly-cloudy-day");
 		hour9.setPrecipIntensity(0d);
@@ -217,7 +215,7 @@ public class AbstractTest {
 		hourly.setData(9, hour9);
 		
 		WeatherData hour10 = new WeatherData();
-		hour10.setTime(new DateTime(1463302800000L));
+		hour10.setTime(1463302800000L);
 		hour10.setSummary("Ligeiramente Nublado");
 		hour10.setIcon("partly-cloudy-day");
 		hour10.setPrecipIntensity(0d);
@@ -234,7 +232,7 @@ public class AbstractTest {
 		hourly.setData(10, hour10);
 		
 		WeatherData hour11 = new WeatherData();
-		hour11.setTime(new DateTime(1463306400000L));
+		hour11.setTime(1463306400000L);
 		hour11.setSummary("Ligeiramente Nublado");
 		hour11.setIcon("partly-cloudy-day");
 		hour11.setPrecipIntensity(0d);
@@ -251,7 +249,7 @@ public class AbstractTest {
 		hourly.setData(11, hour11);
 		
 		WeatherData hour12 = new WeatherData();
-		hour12.setTime(new DateTime(1463310000000L));
+		hour12.setTime(1463310000000L);
 		hour12.setSummary("Ligeiramente Nublado");
 		hour12.setIcon("partly-cloudy-day");
 		hour12.setPrecipIntensity(0d);
@@ -268,7 +266,7 @@ public class AbstractTest {
 		hourly.setData(12, hour12);
 		
 		WeatherData hour13 = new WeatherData();
-		hour13.setTime(new DateTime(1463313600000L));
+		hour13.setTime(1463313600000L);
 		hour13.setSummary("Ligeiramente Nublado");
 		hour13.setIcon("partly-cloudy-day");
 		hour13.setPrecipIntensity(0d);
@@ -285,7 +283,7 @@ public class AbstractTest {
 		hourly.setData(13, hour13);
 		
 		WeatherData hour14 = new WeatherData();
-		hour14.setTime(new DateTime(1463317200000L));
+		hour14.setTime(1463317200000L);
 		hour14.setSummary("Limpo");
 		hour14.setIcon("clear-day");
 		hour14.setPrecipIntensity(0d);
@@ -302,7 +300,7 @@ public class AbstractTest {
 		hourly.setData(14, hour14);
 		
 		WeatherData hour15 = new WeatherData();
-		hour15.setTime(new DateTime(1463320800000L));
+		hour15.setTime(1463320800000L);
 		hour15.setSummary("Limpo");
 		hour15.setIcon("clear-day");
 		hour15.setPrecipIntensity(0d);
@@ -319,7 +317,7 @@ public class AbstractTest {
 		hourly.setData(15, hour15);
 		
 		WeatherData hour16 = new WeatherData();
-		hour16.setTime(new DateTime(1463324400000L));
+		hour16.setTime(1463324400000L);
 		hour16.setSummary("Limpo");
 		hour16.setIcon("clear-day");
 		hour16.setPrecipIntensity(0d);
@@ -336,7 +334,7 @@ public class AbstractTest {
 		hourly.setData(16, hour16);
 		
 		WeatherData hour17 = new WeatherData();
-		hour17.setTime(new DateTime(1463328000000L));
+		hour17.setTime(1463328000000L);
 		hour17.setSummary("Limpo");
 		hour17.setIcon("clear-day");
 		hour17.setPrecipIntensity(0d);
@@ -353,7 +351,7 @@ public class AbstractTest {
 		hourly.setData(17, hour17);
 		
 		WeatherData hour18 = new WeatherData();
-		hour18.setTime(new DateTime(1463331600000L));
+		hour18.setTime(1463331600000L);
 		hour18.setSummary("Vento Fraco");
 		hour18.setIcon("wind");
 		hour18.setPrecipIntensity(0d);
@@ -370,7 +368,7 @@ public class AbstractTest {
 		hourly.setData(18, hour18);
 		
 		WeatherData hour19 = new WeatherData();
-		hour19.setTime(new DateTime(1463335200000L));
+		hour19.setTime(1463335200000L);
 		hour19.setSummary("Vento Fraco");
 		hour19.setIcon("wind");
 		hour19.setPrecipIntensity(0d);
@@ -387,7 +385,7 @@ public class AbstractTest {
 		hourly.setData(19, hour19);
 		
 		WeatherData hour20 = new WeatherData();
-		hour20.setTime(new DateTime(1463338800000L));
+		hour20.setTime(1463338800000L);
 		hour20.setSummary("Vento Fraco");
 		hour20.setIcon("wind");
 		hour20.setPrecipIntensity(0d);
@@ -404,7 +402,7 @@ public class AbstractTest {
 		hourly.setData(20, hour20);
 		
 		WeatherData hour21 = new WeatherData();
-		hour21.setTime(new DateTime(1463342400000L));
+		hour21.setTime(1463342400000L);
 		hour21.setSummary("Vento Fraco");
 		hour21.setIcon("wind");
 		hour21.setPrecipIntensity(0d);
@@ -421,7 +419,7 @@ public class AbstractTest {
 		hourly.setData(21, hour21);
 		
 		WeatherData hour22 = new WeatherData();
-		hour22.setTime(new DateTime(1463346000000L));
+		hour22.setTime(1463346000000L);
 		hour22.setSummary("Vento Fraco");
 		hour22.setIcon("wind");
 		hour22.setPrecipIntensity(0d);
@@ -438,7 +436,7 @@ public class AbstractTest {
 		hourly.setData(22, hour22);
 		
 		WeatherData hour23 = new WeatherData();
-		hour23.setTime(new DateTime(1463349600000L));
+		hour23.setTime(1463349600000L);
 		hour23.setSummary("Vento Fraco");
 		hour23.setIcon("wind");
 		hour23.setPrecipIntensity(0d);
@@ -457,23 +455,23 @@ public class AbstractTest {
 		expectedReport.setHourly(hourly);
 		
 		DailyWeatherData dailyData = new DailyWeatherData();
-		dailyData.setTime(new DateTime(1463266800000L));
+		dailyData.setTime(1463266800000L);
 		dailyData.setSummary("Ligeiramente nublado até tarde e vento fraco começa durante a noite.");
 		dailyData.setIcon("wind");
-		dailyData.setSunriseTime(new DateTime(1463290141000L));
-		dailyData.setSunsetTime(new DateTime(1463341502000L));
+		dailyData.setSunriseTime(1463290141000L);
+		dailyData.setSunsetTime(1463341502000L);
 		dailyData.setMoonPhase(0.3d);
 		dailyData.setPrecipIntensity(0d);
 		dailyData.setPrecipIntensityMax(0d);
 		dailyData.setPrecipProbability(0d);
 		dailyData.setTemperatureMin(14.69d);
-		dailyData.setTemperatureMinTime(new DateTime(1463288400000L));
+		dailyData.setTemperatureMinTime(1463288400000L);
 		dailyData.setTemperatureMax(15.81d);
-		dailyData.setTemperatureMaxTime(new DateTime(1463335200000L));
+		dailyData.setTemperatureMaxTime(1463335200000L);
 		dailyData.setApparentTemperatureMin(14.69d);
-		dailyData.setApparentTemperatureMinTime(new DateTime(1463288400000L));
+		dailyData.setApparentTemperatureMinTime(1463288400000L);
 		dailyData.setApparentTemperatureMax(15.81d);
-		dailyData.setApparentTemperatureMaxTime(new DateTime(1463335200000L));
+		dailyData.setApparentTemperatureMaxTime(1463335200000L);
 		dailyData.setDewPoint(12.28d);
 		dailyData.setHumidity(0.82d);
 		dailyData.setWindSpeed(8.01d);

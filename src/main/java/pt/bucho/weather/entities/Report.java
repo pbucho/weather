@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.joda.time.DateTimeZone;
-
 import pt.bucho.utilities.geopt.District;
 
 @Entity
@@ -19,7 +17,7 @@ public class Report {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	private District district;
-	private DateTimeZone timezone;
+	private String timezone;
 	private long timezoneOffset;
 	@OneToOne(targetEntity = WeatherData.class)
 	private WeatherData currently;
@@ -44,11 +42,11 @@ public class Report {
 		this.district = district;
 	}
 	
-	public DateTimeZone getTimezone() {
+	public String getTimezone() {
 		return timezone;
 	}
 
-	public void setTimezone(DateTimeZone timezone) {
+	public void setTimezone(String timezone) {
 		this.timezone = timezone;
 	}
 
