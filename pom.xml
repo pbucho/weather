@@ -66,4 +66,9 @@
 			</plugin>
 		</plugins>
 	</build>
+	<scm>
+		<url>https://github.com/pbucho/weather</url>
+		<developerConnection>scm:git:git@github.com:pbucho/weather.git</developerConnection>
+		<connection>scm:git:git://github.com/pbucho/weather.git</connection>
+	</scm>
 </project>
