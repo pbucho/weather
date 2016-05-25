@@ -37,7 +37,7 @@ public class FileListParsing {
 			dao.saveReport(parsingService.getReport());
 			log.info("Report saved");
 		}
-		
+		System.exit(0);
 	}
 	
 }
