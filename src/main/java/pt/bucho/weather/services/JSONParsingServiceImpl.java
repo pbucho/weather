@@ -60,7 +60,7 @@ public class JSONParsingServiceImpl implements JSONParsingService {
 			for (int i = 0; i < hourlyArray.size(); i++) {
 				JSONObject obj = (JSONObject) hourlyArray.get(i);
 				WeatherData thisHour = new WeatherData();
-				thisHour.setTime((Long) obj.get("time") * 1000);
+				thisHour.setTime(parseLong(obj.get("time")) * 1000);
 				thisHour.setSummary(String.valueOf(obj.get("summary")));
 				thisHour.setIcon(String.valueOf(obj.get("icon")));
 				thisHour.setPrecipIntensity(parseDouble(obj.get("precipIntensity")));
@@ -81,23 +81,23 @@ public class JSONParsingServiceImpl implements JSONParsingService {
 			
 			daily = (JSONObject) ((JSONArray) daily.get("data")).get(0);
 			DailyWeatherData dailyData = new DailyWeatherData();
-			dailyData.setTime((Long) daily.get("time") * 1000);
+			dailyData.setTime(parseLong(daily.get("time")) * 1000);
 			dailyData.setSummary(String.valueOf(daily.get("summary")));
 			dailyData.setIcon(String.valueOf(daily.get("icon")));
-			dailyData.setSunriseTime((Long) daily.get("sunriseTime") * 1000);
-			dailyData.setSunsetTime((Long) daily.get("sunsetTime") * 1000);
+			dailyData.setSunriseTime(parseLong(daily.get("sunriseTime")) * 1000);
+			dailyData.setSunsetTime(parseLong(daily.get("sunsetTime")) * 1000);
 			dailyData.setMoonPhase(parseDouble(daily.get("moonPhase")));
 			dailyData.setPrecipIntensity(parseDouble(daily.get("precipIntensity")));
 			dailyData.setPrecipIntensityMax(parseDouble(daily.get("precipIntensityMax")));
 			dailyData.setPrecipProbability(parseDouble(daily.get("precipProbability")));
 			dailyData.setTemperatureMin(parseDouble(daily.get("temperatureMin")));
-			dailyData.setTemperatureMinTime((Long) daily.get("temperatureMinTime") * 1000);
+			dailyData.setTemperatureMinTime(parseLong(daily.get("temperatureMinTime")) * 1000);
 			dailyData.setTemperatureMax(parseDouble(daily.get("temperatureMax")));
-			dailyData.setTemperatureMaxTime((Long) daily.get("temperatureMaxTime") * 1000);
+			dailyData.setTemperatureMaxTime(parseLong(daily.get("temperatureMaxTime")) * 1000);
 			dailyData.setApparentTemperatureMin(parseDouble(daily.get("apparentTemperatureMin")));
-			dailyData.setApparentTemperatureMinTime((Long) daily.get("apparentTemperatureMinTime") * 1000);
+			dailyData.setApparentTemperatureMinTime(parseLong(daily.get("apparentTemperatureMinTime")) * 1000);
 			dailyData.setApparentTemperatureMax(parseDouble(daily.get("apparentTemperatureMax")));
-			dailyData.setApparentTemperatureMaxTime((Long) daily.get("apparentTemperatureMaxTime") * 1000);
+			dailyData.setApparentTemperatureMaxTime(parseLong(daily.get("apparentTemperatureMaxTime")) * 1000);
 			dailyData.setDewPoint(parseDouble(daily.get("dewPoint")));
 			dailyData.setHumidity(parseDouble(daily.get("humidity")));
 			dailyData.setWindSpeed(parseDouble(daily.get("windSpeed")));
@@ -128,6 +128,19 @@ public class JSONParsingServiceImpl implements JSONParsingService {
 				return null;
 			}else{
 				return Double.parseDouble(elem);
+			}
+		}
+	}
+	
+	private static Long parseLong(Object element) {
+		if(element instanceof Long) {
+			return (Long) element;
+		}else{
+			String elem = String.valueOf(element);
+			if(elem.equals("null")){
+				return null;
+			}else{
+				return Long.parseLong(elem);
 			}
 		}
 	}
