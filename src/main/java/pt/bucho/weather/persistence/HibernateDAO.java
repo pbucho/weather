@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
+import pt.bucho.weather.entities.JSONFile;
 import pt.bucho.weather.entities.Report;
 import pt.bucho.weather.entities.WeatherData;
 
@@ -35,25 +36,42 @@ public class HibernateDAO {
 	
 	public WeatherData getWeatherData(int id) {
 		beginTransaction();
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(WeatherData.class);
-		WeatherData result = (WeatherData) criteria.add(Restrictions.eq("id", id)).uniqueResult();
+		WeatherData result = (WeatherData) createCriteria(WeatherData.class).add(Restrictions.eq("id", id)).uniqueResult();
 		commit();
 		return result;
 	}
-	
+
 	public Report getReport(int id) {
 		beginTransaction();
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Report.class);
-		Report result = (Report) criteria.add(Restrictions.eq("id", id)).uniqueResult();
+		Report result = (Report) createCriteria(Report.class).add(Restrictions.eq("id", id)).uniqueResult();
 		commit();
 		return result;
 	}
 	
-	public void beginTransaction() {
+	public JSONFile getJSONFile(int id) {
+		beginTransaction();
+		JSONFile result = (JSONFile) createCriteria(JSONFile.class).add(Restrictions.eq("id", id)).uniqueResult();
+		commit();
+		return result;
+	}
+	
+	public JSONFile getJSONFileByPath(String path) {
+		beginTransaction();
+		JSONFile result = (JSONFile) createCriteria(JSONFile.class).add(Restrictions.eq("path", path)).uniqueResult();
+		commit();
+		return result;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private Criteria createCriteria(Class clazz) {
+		return sessionFactory.getCurrentSession().createCriteria(clazz);
+	}
+	
+	private void beginTransaction() {
 		sessionFactory.getCurrentSession().beginTransaction();
 	}
 	
-	public void commit() {
+	private void commit() {
 		sessionFactory.getCurrentSession().getTransaction().commit();
 	}
 	

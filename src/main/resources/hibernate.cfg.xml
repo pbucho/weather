@@ -20,5 +20,7 @@
 		<mapping class="pt.bucho.weather.entities.WeatherData"/>
 		<mapping class="pt.bucho.weather.entities.DailyWeatherData"/>
 		<mapping class="pt.bucho.weather.entities.HourlyWeatherData"/>
+		
+		<mapping class="pt.bucho.weather.entities.JSONFile"/>
 	</session-factory>
 </hibernate-configuration>

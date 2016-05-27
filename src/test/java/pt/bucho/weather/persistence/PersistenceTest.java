@@ -1,4 +1,4 @@
-package pt.bucho.weather.services;
+package pt.bucho.weather.persistence;
 
 import org.junit.Before;
 import org.junit.Test;

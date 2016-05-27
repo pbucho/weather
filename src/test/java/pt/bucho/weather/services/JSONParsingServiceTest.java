@@ -5,7 +5,7 @@ import org.junit.Test;
 import pt.bucho.utilities.geopt.District;
 import pt.bucho.weather.AbstractTest;
 
-public class JSONFileParsingTest extends AbstractTest {
+public class JSONParsingServiceTest extends AbstractTest {
 
 	private JSONParsingService parsingService;
 	private JSONParserFactory parserFactory;
