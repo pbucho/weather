@@ -1,5 +1,7 @@
 package pt.bucho.weather.persistence;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -58,6 +60,14 @@ public class HibernateDAO {
 	public JSONFile getJSONFileByPath(String path) {
 		beginTransaction();
 		JSONFile result = (JSONFile) createCriteria(JSONFile.class).add(Restrictions.eq("path", path)).uniqueResult();
+		commit();
+		return result;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<JSONFile> getJSONFiles() {
+		beginTransaction();
+		List<JSONFile> result = createCriteria(JSONFile.class).list();
 		commit();
 		return result;
 	}
