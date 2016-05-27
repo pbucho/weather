@@ -3,6 +3,9 @@ package pt.bucho.weather.services;
 import java.io.File;
 import java.nio.file.NotDirectoryException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import pt.bucho.weather.entities.JSONFile;
 import pt.bucho.weather.entities.Report;
 import pt.bucho.weather.entities.ReportCollection;
@@ -10,6 +13,8 @@ import pt.bucho.weather.persistence.HibernateDAO;
 
 public class DirectoryParsingService implements JSONParsingService {
 
+	private final Logger log;
+	
 	private HibernateDAO dao;
 	private File directory;
 	private JSONFileSaverService jsonSaver;
@@ -18,6 +23,8 @@ public class DirectoryParsingService implements JSONParsingService {
 	
 	public DirectoryParsingService(HibernateDAO dao, File dir) {
 		this.dao = dao;
+		this.log = LogManager.getRootLogger();
+		
 		if(!dir.isDirectory())
 			throw new IllegalArgumentException("Must specify a directory");
 		
@@ -61,11 +68,18 @@ public class DirectoryParsingService implements JSONParsingService {
 
 			JSONParserFactory parserFactory = new LocalJSONFactory(file.getAbsolutePath());
 			JSONParsingService parsingService = new JSONParsingServiceImpl(parserFactory);
+			
+			if(dao.getJSONFileByPath(jsonFile.getPath()) != null){
+				log.info("Skipping existing file " + jsonFile.getPath());
+				continue;
+			}
 			parsingService.parse();
+			
 			Report report = parsingService.getReport();
 			dao.saveReport(report);
 			reports.addReport(report);
 			jsonSaver.save(jsonFile);
+			log.info("Finished parsing " + jsonFile.getPath());
 		}
 	}
 
